@@ -2,8 +2,11 @@
 
 .back {
     position: relative;
-    width: 530px;
-    height: 680px;
+    width: 90%;
+    margin: 10px auto;
+    max-width: 530px;
+    height: 70%;
+    max-height: 680px;
     border-radius: 30% 30% 0 0;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/static/images/stone.jpg");
     background-size: cover;
