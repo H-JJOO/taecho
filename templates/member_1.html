@@ -1,29 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>TaeCho.vil</title>
-    <script src="/static/javascript/index.js"></script>
-    <link rel="stylesheet" href="/static/css/index.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-</head>
-<body>
-    <!!헤더-->
-    <header>
-        <a class="btn btn-primary" href="introduce" role="button">팀원소개</a>
-        <a class="btn btn-primary" href="promise" role="button">팀 약속</a>
-        <a class="btn btn-primary" href="blog" role="button">블로그</a>
-        <a class="btn btn-primary" href="board" role="button">방명록</a>
-        <a class="btn btn-primary" href="/" role="button">홈</a>
-    </header>
-    <!!헤더-->
+{% extends 'index.html' %}
+{% block head %}
+<title>주현진</title>
+{% endblock %}
+{% block body %}
+주현진
+{% endblock %}
 
-    <!!메인-->
-    <main>
-        주현진
-    </main>
-    <!!메인-->
-
-</body>
-</html>
 
