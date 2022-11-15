@@ -13,25 +13,25 @@ def introduce():
     return render_template('introduce.html')
 
 # 팀원 한명 한명 페이지
-@app.route('/introduce/joo')
+@app.route('/member_1')
 def joo():
-    return render_template('joo.html')
+    return render_template('member_1.html')
 
-@app.route('/introduce/jun')
+@app.route('/member_2')
 def jun():
-    return render_template('jun.html')
+    return render_template('member_2.html')
 
-@app.route('/introduce/jung')
+@app.route('/member_3')
 def jung():
-    return render_template('jung.html')
+    return render_template('member_3.html')
 
-@app.route('/introduce/lee')
+@app.route('/member_4')
 def lee():
-    return render_template('lee.html')
+    return render_template('member_4.html')
 
-@app.route('/introduce/park')
+@app.route('/member_5')
 def park():
-    return render_template('park.html')
+    return render_template('member_5.html')
 # 팀원 한명 한명 페이지
 
 # 팀 약속 페이지
