@@ -1,0 +1,77 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body, ul, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.wrapper {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.team {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-item {
+    flex-basis: 200px;
+    margin: 0 10px;
+    transition: all .4s;
+}
+
+.team-item:hover {
+    flex-basis: 250px;
+    margin: 0 20px;
+}
+
+.team-item img {
+    width: 100%;
+}
+
+.profile-contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 100%;
+}
+
+.profile {
+    background-color: rgb(227, 227, 227);
+
+}
+
+.profile-contents {
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+
+}
+
+.profile-contents h2{
+    font-size:  20px;
+    margin-top: 5px;
+}
+
+.profile-contents p{
+    font-size:  15px;
+    margin: 5px;
+}
