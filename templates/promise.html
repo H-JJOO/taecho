@@ -1,38 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="/static/javascript/index.js"></script>
-    <link rel="stylesheet" href="/static/css/index.css">
-    <link rel="stylesheet" href="/static/css/promise.css">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <title>팀 약속</title>
-  </head>
-  <body>
-  <!!헤더-->
-    <header>
-        <a class="btn btn-primary" href="introduce" role="button">팀원소개</a>
-        <a class="btn btn-primary" href="promise" role="button">팀 약속</a>
-        <a class="btn btn-primary" href="blog" role="button">블로그</a>
-        <a class="btn btn-primary" href="board" role="button">방명록</a>
-        <a class="btn btn-primary" href="/" role="button">홈</a>
-    </header>
-    <!!헤더-->
-
-    <!!메인-->
-    <main>
-      <div class="back">
-        <div class="promise">
-          <p>태초의 약속.</p>
-          <p>하나, 팀플레이에 적극적이자.</p>
+{% extends 'index.html' %}
+{% block head %}
+<link rel="stylesheet" href="/static/css/promise.css">
+<title>팀 약속</title>
+{% endblock %}
+{% block body %}
+<div class="back">
+    <div class="promise">
+        <p>태초의 약속.</p>
+        <p>하나, 팀플레이에 적극적이자.</p>
         <p class="confirm">약속은 지켰나요?</p>
-        </div>
-      </div>
-    </main>
-    <!!메인-->
+    </div>
+</div>
+{% endblock %}
 
 
-  </body>
-</html>
