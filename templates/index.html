@@ -12,11 +12,21 @@
 <body>
     <!!헤더-->
     <header>
-        <a class="btn btn-primary" href="introduce" role="button">팀원소개</a>
-        <a class="btn btn-primary" href="promise" role="button">팀 약속</a>
-        <a class="btn btn-primary" href="blog" role="button">블로그</a>
-        <a class="btn btn-primary" href="board" role="button">방명록</a>
-        <a class="btn btn-primary" href="/" role="button">홈</a>
+        <div class="container text-center">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
+                  <div class="col"><a class="btn btn-primary" href="introduce" role="button">팀원소개</a></div>
+                  <div class="col"><a class="btn btn-primary" href="promise" role="button">팀 약속</a></div>
+                  <div class="col"><a class="btn btn-primary" href="blog" role="button">블로그</a></div>
+                  <div class="col"><a class="btn btn-primary" href="board" role="button">방명록</a></div>
+                  <div class="col"><a class="btn btn-primary" href="/" role="button">홈</a></div>
+              </div>
+        </div>
+
+<!--        <a class="btn btn-primary" href="introduce" role="button">팀원소개</a>-->
+<!--        <a class="btn btn-primary" href="promise" role="button">팀 약속</a>-->
+<!--        <a class="btn btn-primary" href="blog" role="button">블로그</a>-->
+<!--        <a class="btn btn-primary" href="board" role="button">방명록</a>-->
+<!--        <a class="btn btn-primary" href="/" role="button">홈</a>-->
     </header>
     <!!헤더-->
 
@@ -25,6 +35,8 @@
         {% block body %}
         <div>
             <img src="/static/images/isTaeCho_vil.png" alt="" id="first_taecho">
+            <img src="/static/images/taeCho_vil.webp" alt="" id="second_taecho">
+
         </div>
         {% endblock %}
     </main>
