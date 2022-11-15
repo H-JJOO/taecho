@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .back {
+        position: relative;
+        width: 530px;
+        height: 680px;
+        border-radius: 30% 30% 0 0;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+          ),
+          url("/static/images/stone.jpg");
+        background-size: cover;
+      }
+      .promise {
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: "Nanum Brush Script", cursive;
+        color: white;
+        font-size: 32px;
+      }
+      .promise > p {
+        /* no drag */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      .promise > .confirm {
+        margin-top: 20px;
+        font-size: 20px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="back">
+      <div class="promise">
+        <p>태초의 약속.</p>
+        <p>하나, 팀플레이에 적극적이자.</p>
+        <p class="confirm">약속은 지켰나요?</p>
+      </div>
+    </div>
+  </body>
+</html>
