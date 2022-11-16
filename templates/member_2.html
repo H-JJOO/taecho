@@ -1,9 +1,55 @@
 {% extends 'index.html' %}
 {% block head %}
 <title>전수빈</title>
+<script>
+        function write_book() {
+
+        let name = $('#floatingInput').val()
+        let message = $('#floatingTextarea2').val()
+
+        if (name === '') {
+        alert('이름을 써주세요!')
+    }
+        if (message === '') {
+        alert('메세지를 남겨주세요!')
+    } else $.ajax({
+        type: 'POST',
+        url: '/member_2',
+        data: {name_give: name, message_give: message},
+        success: function (response) {
+        alert(response['msg'])
+        window.location.reload()
+    }
+    });
+
+    }
+
+</script>
 {% endblock %}
 {% block body %}
 전수빈
+<div class="myguest">
+
+    <button onclick="open_book()">방명록 남기기</button>
+</div>
+
+<div class="mybook" id="book-box">
+
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">이름</label>
+    </div>
+
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                  style="height: 100px"></textarea>
+        <label for="floatingTextarea2">메세지 남기기</label>
+    </div>
+    <div class="mybtns">
+        <button onclick="write_book()" type="button" class="btn btn-dark">기록하기</button>
+        <button onclick="close_book()" type="button" class="btn btn-outline-dark">닫기</button>
+    </div>
+</div>
 {% endblock %}
 
 
