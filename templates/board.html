@@ -1,7 +1,434 @@
 {% extends 'index.html' %}
 {% block head %}
-<title>방명록</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap"
+      rel="stylesheet">
+
+    <title>방명록</title>
+
+    <style>
+            * {
+                font-family: 'Gowun Batang', serif;
+                color: black;
+            }
+
+            body {
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://img.freepik.com/premium-vector/seamless-vector-patterns-with-night-sky-starry-sky-endless-night-sky-star_497922-623.jpg');
+                background-position: center;
+                background-size: auto;
+            }
+
+
+            @keyframes ring {
+                0% {
+                    width: 30px;
+                    height: 30px;
+                    opacity: 1;
+                }
+                100% {
+                    width: 300px;
+                    height: 300px;
+                    opacity: 0;
+                }
+            }
+
+
+            .w-btn-neon2 {
+                margin: 60px auto 0px auto;
+                position: relative;
+                border: none;
+                min-width: 200px;
+                min-height: 50px;
+                background: linear-gradient(
+                        90deg,
+                        rgba(129, 230, 217, 1) 0%,
+                        rgba(79, 209, 197, 1) 100%
+                );
+                border-radius: 1000px;
+                color: darkslategray;
+                cursor: pointer;
+                box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
+                font-weight: 700;
+                transition: 0.3s;
+            }
+
+            .w-btn-neon2:hover {
+                transform: scale(1.2);
+            }
+
+            .w-btn-neon2:hover::after {
+                content: "";
+                width: 30px;
+                height: 30px;
+                border-radius: 100%;
+                border: 6px solid #00ffcb;
+                position: absolute;
+                z-index: -1;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                animation: ring 1.5s infinite;
+            }
+
+
+            .container {
+                width: 100%;
+                padding-bottom: 60px;
+            }
+
+
+            table {
+                margin: 40px 0;
+                font-size: 18px;
+                width: 100%;
+
+                display: none;
+            }
+
+            .list-group {
+                margin-left: 5px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                max-width: 200px;
+                max-height: 200px;
+
+            }
+
+            h6 {
+                contain: content;
+                overflow: scroll;
+            }
+
+            p {
+                contain: content;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+            }
+
+
+
+
+
+        </style>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/board_1',
+                data: {},
+                success: function (response) {
+                    let rows = response['guests1']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let message = rows[i]['message']
+
+                        let temp_html =
+                            ` <tr>
+                        <td>
+                         <div class="list-group" >
+                            <a class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">이름: ${name}</p>
+                                </div>
+                                <h6 class="mb-1">메세지: ${message}</h6>
+                            </a>
+                        </div>
+                        </td>
+
+                    </tr>`
+                        $('#guest1-box').append(temp_html)
+                    }
+                }
+            })
+        });
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/board_2',
+                data: {},
+                success: function (response) {
+                    let rows = response['guests2']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let message = rows[i]['message']
+
+                        let temp_html =
+                            ` <tr>
+                        <td>
+                         <div class="list-group" >
+                            <a class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">이름: ${name}</p>
+                                </div>
+                                <h6 class="mb-1">메세지: ${message}</h6>
+                            </a>
+                        </div>
+                        </td>
+
+                    </tr>`
+                        $('#guest2-box').append(temp_html)
+                    }
+                }
+            })
+        });
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/board_3',
+                data: {},
+                success: function (response) {
+                    let rows = response['guests3']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let message = rows[i]['message']
+
+                        let temp_html =
+                            ` <tr>
+                        <td>
+                         <div class="list-group" >
+                            <a class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">이름: ${name}</p>
+                                </div>
+                                <h6 class="mb-1">메세지: ${message}</h6>
+                            </a>
+                        </div>
+                        </td>
+
+                    </tr>`
+                        $('#guest3-box').append(temp_html)
+                    }
+                }
+            })
+        });
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/board_4',
+                data: {},
+                success: function (response) {
+                    let rows = response['guests4']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let message = rows[i]['message']
+
+                        let temp_html =
+                            ` <tr>
+                        <td>
+                         <div class="list-group" >
+                            <a class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">이름: ${name}</p>
+                                </div>
+                                <h6 class="mb-1">메세지: ${message}</h6>
+                            </a>
+                        </div>
+                        </td>
+
+                    </tr>`
+                        $('#guest4-box').append(temp_html)
+                    }
+                }
+            })
+        });
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/board_5',
+                data: {},
+                success: function (response) {
+                    let rows = response['guests5']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let message = rows[i]['message']
+
+                        let temp_html =
+                            ` <tr>
+                        <td>
+                         <div class="list-group" >
+                            <a class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">이름: ${name}</p>
+                                </div>
+                                <h6 class="mb-1">메세지: ${message}</h6>
+                            </a>
+                        </div>
+                        </td>
+
+                    </tr>`
+                        $('#guest5-box').append(temp_html)
+                    }
+                }
+            })
+        });
+
+
+
+
+            //방명록 여닫는 버튼 코드
+            $(document).ready(function () {
+                isShow = true;
+                $('#b1').on('click', function () {
+                    if (isShow) {
+                        isShow = false;
+                        $('#table1').show("slow"),
+                        $('#b1').text('방명록')
+
+                    } else {
+                        isShow = true;
+                        $('#table1').hide("fast");
+                        $('#b1').text('주현진 팀장');
+
+                    }
+                })
+            })
+            $(document).ready(function () {
+                isShow = true;
+                $('#b2').on('click', function () {
+                    if (isShow) {
+                        isShow = false;
+                        $('#table2').show("slow"),
+                        $('#b2').text('방명록')
+
+                    } else {
+                        isShow = true;
+                        $('#table2').hide("fast");
+                        $('#b2').text('전수빈 팀원');
+
+                    }
+                })
+            })
+            $(document).ready(function () {
+                isShow = true;
+                $('#b3').on('click', function () {
+                    if (isShow) {
+                        isShow = false;
+                        $('#table3').show("slow"),
+                        $('#b3').text('방명록')
+
+                    } else {
+                        isShow = true;
+                        $('#table3').hide("fast");
+                        $('#b3').text('박진 팀원');
+
+                    }
+                })
+            })
+            $(document).ready(function () {
+                isShow = true;
+                $('#b4').on('click', function () {
+                    if (isShow) {
+                        isShow = false;
+                        $('#table4').show("slow"),
+                        $('#b4').text('방명록')
+
+                    } else {
+                        isShow = true;
+                        $('#table4').hide("fast");
+                        $('#b4').text('이혜원 팀원');
+
+                    }
+                })
+            })
+            $(document).ready(function () {
+                isShow = true;
+                $('#b5').on('click', function () {
+                    if (isShow) {
+                        isShow = false;
+                        $('#table5').show("slow"),
+                        $('#b5').text('방명록')
+
+                    } else {
+                        isShow = true;
+                        $('#table5').hide("fast");
+                        $('#b5').text('정성훈 팀원');
+
+                    }
+                })
+            })
+
+
+
+
+        </script>
+
 {% endblock %}
+
+
 {% block body %}
-방명록
+
+     <div class="container">
+            <div class="row row-cols-5">
+                <div class="col">
+                    <button class="w-btn-neon2" type="button" id="b1">
+                        주현진 팀장
+                    </button>
+                    <table class="table" id="table1">
+                        <thead>
+                        </thead>
+                        <tbody id="guest1-box">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <button class="w-btn-neon2" type="button" id="b2">
+                        전수빈 팀원
+                    </button>
+                    <table class="table" id="table2">
+                        <thead>
+                        </thead>
+                        <tbody id="guest2-box">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <button class="w-btn-neon2" type="button" id="b3">
+                        박진 팀원
+                    </button>
+                    <table class="table" id="table3">
+                        <thead>
+                        </thead>
+                        <tbody id="guest3-box">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <button class="w-btn-neon2" type="button" id="b4">
+                        이혜원 팀원
+                    </button>
+                    <table class="table4" id="table4">
+                        <thead>
+                        </thead>
+                        <tbody id="guest4-box">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col">
+                    <button class="w-btn-neon2" type="button" id="b5">
+                        정성훈 팀원
+                    </button>
+                    <table class="table" id="table5">
+                        <thead>
+                        </thead>
+                        <tbody id="guest5-box">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 {% endblock %}
