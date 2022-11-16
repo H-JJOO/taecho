@@ -4,19 +4,25 @@ body {
     scroll-behavior: unset;
 }
 
+a {
+    text-decoration: none;
+}
+
 header {
     width: 100%;
     height: 60px;
     background-color: skyblue;
-
+    font-family: 'Do Hyeon', sans-serif;
 }
+
+
 
 #first_taecho {
     position: absolute;
     margin: 10px;
     width: 30%;
     height: auto;
-    opacity: 0.7;
+    /*opacity: 0.7;*/
 }
 
 #second_taecho {
@@ -49,3 +55,20 @@ body > header > div > div > div.col > a {
     border: 2px solid white;
     margin: 10px;
 }
+
+.goals {
+    display: inline;
+    position: absolute;
+    font-size: 40px;
+    right: 24.5%;
+    bottom: 39%;
+    background-color: rgba(255, 255, 255, 0);
+    text-align: center;
+    font-weight: bold;
+
+}
+
+
+
+
+
