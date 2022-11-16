@@ -74,6 +74,36 @@ if (savedBoxColor === null) {
 }
 
 
+// --------------------
+function save_color() {
+    let bodyTextColor = savedBgColor
+    let textColor     = savedTextColor
+    let boxColor      = savedBoxColor
+
+    console.log(bodyTextColor+" !")
+    console.log(textColor+" !")
+    console.log(boxColor+" !")
+
+    $.ajax({
+        type: "POST",
+        url: "/member_5",
+        data: {'bodyTextColor_give':bodyTextColor, 'textColor_give':textColor, 'boxColor_give':boxColor},
+        success: function (response) {
+            alert(response["msg"])
+            window.location.reload()
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+
 
 let temp_html_post = `<div class="mypost" id="postBox">
                         <div class="mypic">
@@ -89,7 +119,7 @@ let temp_html_post = `<div class="mypost" id="postBox">
                             <label for="floatingTextarea2">comment</label>
                         </div>
                    
-                        <button onclick="save_comment()" onclick="openBox()" type="button" id="Confirmbutton">Confirm</button>
+                        <button onclick="write_book()" onclick="openBox()" type="button" id="Confirmbutton">Confirm</button>
                         <button onclick="closePostBox()" onclick="openBox()" type="button" id="backbutton">Back</button>
                     </div>
                     `
