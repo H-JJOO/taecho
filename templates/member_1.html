@@ -1,9 +1,84 @@
 {% extends 'index.html' %}
 {% block head %}
+<script src="/static/javascript/member_1.js"></script>
+<link rel="stylesheet" href="/static/css/member_1.css">
+<link rel="stylesheet" href="/css/member_1.css">
+<link rel="stylesheet" href="/static/css/common.css">
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
 <title>주현진</title>
 {% endblock %}
 {% block body %}
-주현진
+
+    <section class="profile">
+
+        <div class="profile-image">
+            <img alt src="/static/images/hyeonjin/face.PNG">
+        </div>
+
+        <span class="name">A Developing Developer</span>
+        <span class="name">HyeonJin Joo</span>
+        <span class="name">H-JJOO</span>
+
+        <button><a href="https://github.com/H-JJOO" goals="_blank"><img src="/static/images/hyeonjin/github.png" alt="" id="github"></a></button>
+        <button><a href="https://icepri3535.tistory.com/" goals="_blank"><img src="/static/images/hyeonjin/tistory.svg" alt="" id="tistory"></a></button>
+
+    </section>
+
+    <section class="content" id="content">
+
+        <div class="home" id="home">
+            Home
+        </div>
+
+        <div class="about me" id="about me">
+            About me
+        </div>
+
+        <div class="study-skill" id="study-skill">
+            Study&Skill
+        </div>
+
+        <div class="portfolio" id="portfolio">
+            Portfolio
+        </div>
+
+        <div class="ambition" id="ambition">
+            Ambition
+        </div>
+
+    </section>
+
+<!--    navigator-->
+    <nav>
+        <ul>
+            <li>
+                <a href="#home">
+                    <img alt="Home" src="/static/images/hyeonjin/home.png" title="HOME">
+                </a>
+            </li>
+            <li>
+                <a href="#about me">
+                    <img alt="About Me" src="/static/images/hyeonjin/about-me.png" title="ABOUT ME">
+                </a>
+            </li>
+            <li>
+                <a href="#study-skill">
+                    <img alt="Study-Skill" src="/static/images/hyeonjin/resume.png" title="STUDY&SKILL">
+                </a>
+            </li>
+            <li>
+                <a href="#portfolio">
+                    <img alt="Portfolio" src="/static/images/hyeonjin/portfolio.png" title="PORTFOLIO">
+                </a>
+            </li>
+            <li>
+                <a href="#ambition">
+                    <img alt="Contact" src="/static/images/hyeonjin/contact.png" title="AMBITION">
+                </a>
+            </li>
+        </ul>
+    </nav>
+<!--    navigator-->
 {% endblock %}
 
 

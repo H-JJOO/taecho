@@ -1,0 +1,205 @@
+html {
+    scroll-behavior: smooth;
+}
+
+main {
+    font-family: 'Dongle', sans-serif;
+    font-size: 50px;
+}
+
+body > main {
+    top: 50%;
+    left: 50%;
+    width: 70vw;
+    max-width: 100rem;
+    height: 70vh;
+
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+body > main > section.profile {
+    align-items: center;
+    background-color: var(--profile-background-color);
+    border-top-left-radius: var(--content-border-radius);
+    border-bottom-left-radius: var(--content-border-radius);
+    color: var(--profile-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--content-padding) calc(var(--content-padding) * 2) var(--content-padding) var(--content-padding);
+}
+
+body > main > section.profile > div.profile-image {
+    width: 250px;
+    height: 250px;
+    border: 0.5rem solid black;
+    border-radius: 50%;
+    /*margin: 0 2rem 1rem 2rem;*/
+    overflow: hidden;
+    position: relative;
+    background-color: white;
+}
+
+body > main > section.profile > div.profile-image > img {
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+body > main > section.profile > span.name {
+    font-size: 40px;
+    font-weight: 800;
+
+
+}
+
+body > main > section.profile > span.misc {
+    font-size: 1.5rem;
+}
+
+body > main > section.profile > div.spring {
+    flex: 1;
+}
+
+body > main > section.profile > button {
+    appearance: none;
+    background-color: transparent;
+    border: 0.125rem solid #ffffff;
+    border-radius: var(--content-border-radius);
+    color: inherit;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 1rem;
+    transition-duration: 250ms;
+}
+
+body > main > section.profile > button:hover {
+    background-color: #ffffff;
+    color: var(--profile-background-color);
+}
+
+body > main > section.profile > ul {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1.5rem;
+}
+
+body > main > section.profile > ul > li {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 0.5rem;
+    position: relative;
+    transition-duration: 250ms;
+}
+
+body > main > section.profile > ul > li:not(:last-child) {
+    margin-right: 0.5rem;
+}
+
+body > main > section.profile > ul > li:hover {
+    backdrop-filter: brightness(1.15);
+}
+
+body > main > section.profile > ul > li > a > img {
+    top:50%;
+    left: 50%;
+    width: 75%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+
+body > main > section.content {
+    left: calc(var(--content-border-radius) * -1);
+    background-color: var(--content-background-color);
+    border-radius: 2rem 0 0 2rem;
+    flex: 1;
+    padding: 1.5rem;
+    position: relative;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+body > main > section.content::-webkit-scrollbar {
+    width: 1rem;
+    background-color: var(--global-background-color);
+}
+
+body > main > section.content::-webkit-scrollbar-thumb {
+    background-color: var(--profile-background-color);
+    border-radius: 1rem;
+    background-clip: padding-box;
+    border: 2px solid var(--global-background-color);
+}
+
+body > main > section.content::-webkit-scrollbar-track {
+    background-color: var(--global-background-color);
+    border-radius: 10px;
+    box-shadow: none;
+  }
+
+body > main > nav {
+    align-items: center;
+    display: block;
+    flex-direction: row;
+    justify-content: right;
+}
+
+body > main > nav > ul {
+    background-color: var(--content-background-color);
+    border-radius: 999px;
+    padding: 0.75rem 0;
+    user-select: none;
+    
+}
+
+body > main > nav > ul > li {
+    padding: var(--nav-item-padding);
+    
+}
+
+body > main > nav > ul > li > a > img {
+    width: 1.75rem;
+    filter: grayscale(1);
+    -webkit-user-drag: none;
+}
+
+body > main > nav > ul > li:hover > a > img {
+    filter: var(--profile-background-color);
+}
+
+body > main > nav > div {
+    flex: 1;
+}
+
+body > main > section.contetnt {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body > main > section.content > div {
+    width: 100%;
+    height: 40.8rem;    
+}
+
+#tistory, #github {
+    width: 50px;
+    height: 50px;
+}
+
+button {
+    margin: 10px;
+}

@@ -7,6 +7,10 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/goals')
+def goals():
+    return render_template('goals.html')
+
 # 팀 소개 페이지
 @app.route('/introduce')
 def introduce():
