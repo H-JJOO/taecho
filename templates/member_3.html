@@ -1,9 +1,112 @@
 {% extends 'index.html' %}
 {% block head %}
+<link rel="stylesheet" href="/static/css/member_3.css">
 <title>박진</title>
 {% endblock %}
 {% block body %}
-박진
+<div class="container mt-3 pb-5">
+    <div class="d-flex flex-row mb-3">
+        <img src="/static/images/parkjin.jpg" class="img-thumbnail">
+
+        <div class="profile ms-3">
+            <p class="fs-2">박진(Park Jin)</p>
+            <p class="fs-3"><i>"자바스크립트 생태계를 뛰놀고 싶은 남자"</i></p>
+            <p class="fs-4 m-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                     class="bi bi-envelope" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                </svg>
+                qkrwls6521@gmail.com
+            </p>
+            <p class="fs-4 m-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-github"
+                     viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                tstunas@github.com
+            </p>
+            <p class="fs-4 m-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-pen"
+                     viewBox="0 0 16 16">
+                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                </svg>
+                https://velog.io/@tstunas3
+            </p>
+        </div>
+    </div>
+    <div class="accordion" id="comment-accordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                    방명록 남기기
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                 data-bs-parent="#comment-accordion">
+                <div class="accordion-body">
+                    <div class="mb-3">
+                        <label for="nameInput" class="form-label">이름</label>
+                        <input type="name" class="form-control" id="nameInput"
+                               placeholder="지나가는 개발자">
+                    </div>
+                    <div class="mb-3">
+                        <label for="commentInput" class="form-label">코멘트</label>
+                        <textarea class="form-control" id="commentInput" rows="5" placeholder="잘 하고 있어요!"></textarea>
+                    </div>
+                    <div class="text-end">
+                        <button type="button" class="comment_submit btn btn-primary">방명록 작성</button>
+                        <button type="button" class="commnet_cancel btn btn-light" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">닫기
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3 ">
+        <div class="card-header bg-primary bg-gradient text-white">
+            INFP, 진심내면 무섭다구요!
+        </div>
+        <div class="card-body">
+            <p>INFP는 일단 불이 붙으면 무시무시한 성능을 뽑아낸다고 합니다.</p>
+            <p>자기 확신이 부족하여 불발탄이 일어나는 경우가 많지만요.</p>
+            <p>잘 하고 있다는 확신을 심어준다면, INFP는 200% 성과를 낼 것입니다!</p>
+            <button type="button" class="btn btn-secondary">넌 잘하고 있어!</button>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-header bg-primary bg-gradient text-white">
+            더 좋게 만들 수 없을까를 항상 고민하는 사람!
+        </div>
+        <div class="card-body">
+            <p>항상 만족하지 못 하고 더 나은 걸 추구한다.</p>
+            <p>전체적인 완성도를 고려하지 않고, 부분적인 디테일을 챙기느라 문제가 생기긴 한다.</p>
+            <p>이 장점을 잘 살리기 위해 자신의 기준과 타협하는 방법을 배우는 중!</p>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-header bg-primary bg-gradient text-white">
+            협업 시 자신의 스타일
+        </div>
+        <div class="card-body">
+            <p>협업 프로세스가 효율적으로 메뉴얼화되어있지 않으면 뭔가 불안하다.</p>
+            <p>그래서 공부하기 전에 책상을 정리정돈하듯이, 미리 사전준비에 공을 들인다.</p>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-header bg-primary bg-gradient text-white">
+            생태계의 진정한 구성원이 되고 싶다.
+        </div>
+        <div class="card-body">
+            <p>남이 만든 라이브러리를 그냥 갖다쓰기만 하는 소비자의 삶은 질렸다.</p>
+            <p>내가 남이 쓸 수 있는 부분을 만들어낼 수 있는 생산자가 되고 싶다고 생각합니다.</p>
+        </div>
+    </div>
+</div>
 {% endblock %}
-
-
