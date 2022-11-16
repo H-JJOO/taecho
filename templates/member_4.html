@@ -1,9 +1,176 @@
 {% extends 'index.html' %}
+
+
 {% block head %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <title>이혜원</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+<style>
+    * {
+        font-family: 'Gowun Dodum', sans-serif;
+    }
+
+    body {
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://365psd.com/images/istock/previews/9291/92914431-stars-at-night-sky-background-illustration-art.jpg');
+        background-position: center;
+        background-size: contain;
+
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+
+
+    .myguest {
+        width: 100%;
+        height: 50px;
+
+        color: white;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .myguest > button {
+        width: 200px;
+        height: 50px;
+
+        background-color: transparent;
+        color: black;
+
+        border-radius: 50px;
+        border: 1px solid black;
+
+        margin-top: 10px;
+    }
+
+    .myguest > button:hover {
+        border: 2px solid black;
+    }
+
+
+    .mybook {
+        width: 95%;
+        max-width: 500px;
+        margin: 20px auto 0px auto;
+        padding: 20px;
+        box-shadow: 0px 0px 3px 0px gray;
+
+        display: none;
+    }
+
+    .mybtns {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        margin-top: 20px;
+    }
+
+    .mybtns > button {
+        margin-right: 10px;
+    }
+
+
+    .contain {
+        margin: auto;
+        align-content: center;
+        width: 60%;
+        max-width: 600px;
+        height: auto;
+        background-color: white;
+        background-position: center;
+
+        border: 5px;
+        border-style: dashed;
+        border-color: cadetblue;
+
+    }
+
+</style>
+<script>
+    function open_book() {
+        $('#book-box').show()
+    }
+
+    function close_book() {
+        $('#book-box').hide()
+    }
+
+    function write_book() {
+
+        let name = $('#floatingInput').val()
+        let message = $('#floatingTextarea2').val()
+
+        if (name === '') {
+            alert('이름을 써주세요!')
+        }
+        if (message === '') {
+            alert('메세지를 남겨주세요!')
+        } else $.ajax({
+            type: 'POST',
+            url: '/name',
+            data: {name_give: name, message_give: message},
+            success: function (response) {
+                alert(response['msg'])
+                window.location.reload()
+            }
+        });
+
+    }
+
+    </script>
 {% endblock %}
+
 {% block body %}
-이혜원
+<div class="contain" style="text-align: center">
+    <img src="https://w.namu.la/s/227a3f4faf5fe4a7e72e621faecb1715f76619dc578f7bd9883efe9e74a801788f66cb1a0a92c677b4b4222ea71db9a1cab5781c56da1f6e3a7fd57453d5a8e01a167889cf880b2595045bfc0e55dd0fdf0ccede6b6db964485eddb902b1ea45">
+    <h1>ABOUT ME</h1>
+    <br/>
+    <a href="https://github.com/dadaqq1009"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="70px" height="70px"></a>
+    <a href="https://www.facebook.com/profile.php?id=100004699667731"><img src="https://cdn-icons-png.flaticon.com/512/49/49354.png" width="70px" height="70px"></a>
+    <a href="https://www.instagram.com/dadaqqq1009/"><img src="https://cdn-icons-png.flaticon.com/512/87/87390.png" width="70px" height="70px"></a>
+
+
+    <h4 style="color: gray">Click this icons<br>then, you can go to My SNS Page</h4>
+    <h5>MBTI: ISFP-T<br>장점: 무던하다.
+        <br>협업할 때 나의 스타일: <br>등등등</h5>
+
+    <div class="myguest">
+
+        <button onclick="open_book()">방명록 남기기</button>
+    </div>
+
+    <div class="mybook" id="book-box">
+
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">이름</label>
+        </div>
+
+        <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                  style="height: 100px"></textarea>
+            <label for="floatingTextarea2">메세지 남기기</label>
+        </div>
+        <div class="mybtns">
+            <button onclick="write_book()" type="button" class="btn btn-dark">기록하기</button>
+            <button onclick="close_book()" type="button" class="btn btn-outline-dark">닫기</button>
+        </div>
+    </div>
+
+
+    <h6 style="color: gray" >lulilaks7@gmail.com</h6>
+</div>
+
 {% endblock %}
 
 
