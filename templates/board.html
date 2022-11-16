@@ -102,9 +102,8 @@
                 margin-top: 5px;
                 margin-bottom: 5px;
                 max-width: 200px;
-                width: 95%;
                 max-height: 200px;
-                height: 95%;
+
             }
 
             h6 {
@@ -127,12 +126,99 @@
 
     <script>
         $(document).ready(function () {
-            show_order();
-        });
-        function show_order() {
             $.ajax({
                 type: 'GET',
-                url: '/boards',
+                url: '/board_1',
+                data: {},
+                success: function (response) {
+                    let rows = response['guests1']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let message = rows[i]['message']
+
+                        let temp_html =
+                            ` <tr>
+                        <td>
+                         <div class="list-group" >
+                            <a class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">이름: ${name}</p>
+                                </div>
+                                <h6 class="mb-1">메세지: ${message}</h6>
+                            </a>
+                        </div>
+                        </td>
+
+                    </tr>`
+                        $('#guest1-box').append(temp_html)
+                    }
+                }
+            })
+        });
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/board_2',
+                data: {},
+                success: function (response) {
+                    let rows = response['guests2']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let message = rows[i]['message']
+
+                        let temp_html =
+                            ` <tr>
+                        <td>
+                         <div class="list-group" >
+                            <a class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">이름: ${name}</p>
+                                </div>
+                                <h6 class="mb-1">메세지: ${message}</h6>
+                            </a>
+                        </div>
+                        </td>
+
+                    </tr>`
+                        $('#guest2-box').append(temp_html)
+                    }
+                }
+            })
+        });
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/board_3',
+                data: {},
+                success: function (response) {
+                    let rows = response['guests3']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let message = rows[i]['message']
+
+                        let temp_html =
+                            ` <tr>
+                        <td>
+                         <div class="list-group" >
+                            <a class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">이름: ${name}</p>
+                                </div>
+                                <h6 class="mb-1">메세지: ${message}</h6>
+                            </a>
+                        </div>
+                        </td>
+
+                    </tr>`
+                        $('#guest3-box').append(temp_html)
+                    }
+                }
+            })
+        });
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/board_4',
                 data: {},
                 success: function (response) {
                     let rows = response['guests4']
@@ -157,8 +243,41 @@
                         $('#guest4-box').append(temp_html)
                     }
                 }
-            });
-        }
+            })
+        });
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/board_5',
+                data: {},
+                success: function (response) {
+                    let rows = response['guests5']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let message = rows[i]['message']
+
+                        let temp_html =
+                            ` <tr>
+                        <td>
+                         <div class="list-group" >
+                            <a class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">이름: ${name}</p>
+                                </div>
+                                <h6 class="mb-1">메세지: ${message}</h6>
+                            </a>
+                        </div>
+                        </td>
+
+                    </tr>`
+                        $('#guest5-box').append(temp_html)
+                    }
+                }
+            })
+        });
+
+
+
 
             //방명록 여닫는 버튼 코드
             $(document).ready(function () {
@@ -260,14 +379,8 @@
                     </button>
                     <table class="table" id="table1">
                         <thead>
-                        <tr>
-                            <th scope="col">이름</th>
-                            <th scope="col">메세지</th>
-                        </tr>
                         </thead>
                         <tbody id="guest1-box">
-                        <tr>
-                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -277,13 +390,8 @@
                     </button>
                     <table class="table" id="table2">
                         <thead>
-                        <tr>
-                            <th scope="col">이름</th>
-                            <th scope="col">메세지</th>
-                        </tr>
                         </thead>
                         <tbody id="guest2-box">
-
                         </tbody>
                     </table>
                 </div>
@@ -293,10 +401,6 @@
                     </button>
                     <table class="table" id="table3">
                         <thead>
-                        <tr>
-                            <th scope="col">이름</th>
-                            <th scope="col">메세지</th>
-                        </tr>
                         </thead>
                         <tbody id="guest3-box">
                         </tbody>
@@ -320,10 +424,6 @@
                     </button>
                     <table class="table" id="table5">
                         <thead>
-                        <tr>
-                            <th scope="col">이름</th>
-                            <th scope="col">메세지</th>
-                        </tr>
                         </thead>
                         <tbody id="guest5-box">
                         </tbody>
