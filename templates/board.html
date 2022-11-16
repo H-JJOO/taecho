@@ -76,25 +76,44 @@
             }
 
 
-            h1 {
-                font-weight: bold;
-            }
-
-            .order {
+            .container {
                 width: 100%;
 
                 margin: 60px auto 0px auto;
                 padding-bottom: 60px;
 
+
             }
 
 
-
             table {
-                margin : 40px 0;
+                margin: 40px 0;
                 font-size: 18px;
+                width: 100%;
 
-                display:none;
+                display: none;
+            }
+
+            .list-group {
+                margin-left: 5px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                max-width: 200px;
+                width: 95%;
+                max-height: 200px;
+                height: 95%;
+            }
+
+            h6 {
+                contain: content;
+                overflow: scroll;
+            }
+
+            p {
+                contain: content;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
             }
 
 
@@ -104,29 +123,39 @@
         </style>
 
     <script>
-            $(document).ready(function () {
-                show_order();
-            });
-            function show_order() {
-                $.ajax({
-                    type: 'GET',
-                    url: '/board',
-                    data: {},
-                    success: function (response) {
-                        let rows = response['guests4']
-                        for(let i = 0; i < rows.length; i++){
-                            let name = rows[i]['name']
-                            let message = rows[i]['message']
+        $(document).ready(function () {
+            show_order();
+        });
+        function show_order() {
+            $.ajax({
+                type: 'GET',
+                url: '/boards',
+                data: {},
+                success: function (response) {
+                    let rows = response['guests4']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let message = rows[i]['message']
 
-                            let temp_html = ` <tr>
-                                                <td>${name}</td>
-                                                <td>${message}</td>
-                                              </tr>`
-                            $('#guest4-box').append(temp_html)
-                        }
+                        let temp_html =
+                            ` <tr>
+                        <td>
+                         <div class="list-group" >
+                            <a class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">이름: ${name}</p>
+                                </div>
+                                <h6 class="mb-1">메세지: ${message}</h6>
+                            </a>
+                        </div>
+                        </td>
+
+                    </tr>`
+                        $('#guest4-box').append(temp_html)
                     }
-                });
-            }
+                }
+            });
+        }
 
             //방명록 여닫는 버튼 코드
             $(document).ready(function () {
@@ -219,96 +248,84 @@
 
 
 {% block body %}
-    <h1>방명록 페이지!</h1>
 
-    <div class="order">
-        <div class="container">
-        <div class="row row-cols-5">
-            <div class="col">
-                <button class="w-btn-neon2" type="button" id="b1">
-                    주현진 팀장
-                </button>
-                <table class="table" id="table1">
-            <thead>
-            <tr>
-                <th scope="col">이름</th>
-                <th scope="col">메세지</th>
-            </tr>
-            </thead>
-            <tbody id="guest1-box">
-            <tr>
-            </tr>
-            </tbody>
-        </table>
-            </div>
-            <div class="col">
-                <button class="w-btn-neon2" type="button" id="b2">
-                    전수빈 팀원
-                </button>
-                <table class="table" id="table2">
-                    <thead>
-                    <tr>
-                        <th scope="col">이름</th>
-                        <th scope="col">메세지</th>
-                    </tr>
-                    </thead>
-                    <tbody id="guest2-box">
+     <div class="container">
+            <div class="row row-cols-5">
+                <div class="col">
+                    <button class="w-btn-neon2" type="button" id="b1">
+                        주현진 팀장
+                    </button>
+                    <table class="table" id="table1">
+                        <thead>
+                        <tr>
+                            <th scope="col">이름</th>
+                            <th scope="col">메세지</th>
+                        </tr>
+                        </thead>
+                        <tbody id="guest1-box">
+                        <tr>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <button class="w-btn-neon2" type="button" id="b2">
+                        전수빈 팀원
+                    </button>
+                    <table class="table" id="table2">
+                        <thead>
+                        <tr>
+                            <th scope="col">이름</th>
+                            <th scope="col">메세지</th>
+                        </tr>
+                        </thead>
+                        <tbody id="guest2-box">
 
-                    </tbody>
-                </table>
-            </div>
-            <div class="col">
-                <button class="w-btn-neon2" type="button" id="b3">
-                    박진 팀원
-                </button>
-                <table class="table" id="table3">
-                    <thead>
-                    <tr>
-                        <th scope="col">이름</th>
-                        <th scope="col">메세지</th>
-                    </tr>
-                    </thead>
-                    <tbody id="guest3-box">
-                    </tbody>
-                </table>
-            </div>
-            <div class="col">
-                <button  class="w-btn-neon2" type="button" id="b4">
-                    이혜원 팀원
-                </button>
-                <table class="table4" id="table4">
-                    <thead>
-                    <tr>
-                        <th scope="col">이름</th>
-                        <th scope="col">메세지</th>
-                    </tr>
-                    </thead>
-                    <tbody id="guest4-box">
-                    </tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <button class="w-btn-neon2" type="button" id="b3">
+                        박진 팀원
+                    </button>
+                    <table class="table" id="table3">
+                        <thead>
+                        <tr>
+                            <th scope="col">이름</th>
+                            <th scope="col">메세지</th>
+                        </tr>
+                        </thead>
+                        <tbody id="guest3-box">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <button class="w-btn-neon2" type="button" id="b4">
+                        이혜원 팀원
+                    </button>
+                    <table class="table4" id="table4">
+                        <thead>
+                        </thead>
+                        <tbody id="guest4-box">
+                        </tbody>
+                    </table>
+                </div>
 
-            <div class="col">
-                <button class="w-btn-neon2" type="button" id="b5">
-                    정성훈 팀원
-                </button>
-                <table class="table" id="table5">
-                    <thead>
-                    <tr>
-                        <th scope="col">이름</th>
-                        <th scope="col">메세지</th>
-                    </tr>
-                    </thead>
-                    <tbody id="guest5-box">
-                    </tbody>
-                </table>
+                <div class="col">
+                    <button class="w-btn-neon2" type="button" id="b5">
+                        정성훈 팀원
+                    </button>
+                    <table class="table" id="table5">
+                        <thead>
+                        <tr>
+                            <th scope="col">이름</th>
+                            <th scope="col">메세지</th>
+                        </tr>
+                        </thead>
+                        <tbody id="guest5-box">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-
-
-
-
-
-    </div>
 {% endblock %}

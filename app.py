@@ -34,8 +34,10 @@ def park():
 def lee():
     return render_template('member_4.html')
 
+
 @app.route("/member_4", methods=["POST"])
-def web_board_post():
+def post_guest_list():
+
     name_receive = request.form['name_give']
     message_receive = request.form['message_give']
 
@@ -68,8 +70,9 @@ def blog():
 def board():
     return render_template('board.html')
 
-@app.route("/board", methods=["GET"])
-def web_board_get():
+@app.route("/boards", methods=["GET"])
+def get_guest_list():
+
     guest_list4 = list(db.member_4.find({}, {'_id': False}))
 
     return jsonify({'guests4': guest_list4})
