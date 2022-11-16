@@ -150,8 +150,8 @@ def get_guest_list3():
 
 @app.route("/board_4", methods=["GET"])
 def get_guest_list4():
-    guest_list = list(db.member_4.find({}, {'_id': False}))
-    return jsonify({'guests4': guest_list})
+    guest_list4 = list(db.member_4.find({}, {'_id': False}))
+    return jsonify({'guests4': guest_list4})
 
 
 @app.route("/board_5", methods=["GET"])
