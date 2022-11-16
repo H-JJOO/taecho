@@ -3,6 +3,8 @@
 
 {% block head %}
 
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -127,7 +129,7 @@
             alert('메세지를 남겨주세요!')
         } else $.ajax({
             type: 'POST',
-            url: '/name',
+            url: '/member_4',
             data: {name_give: name, message_give: message},
             success: function (response) {
                 alert(response['msg'])
