@@ -1,7 +1,101 @@
 {% extends 'index.html' %}
 {% block head %}
+ <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="C:\Taechovil blog\taecho\blog crawling\bc\static\blogcr.css"
+          rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
 <title>블로그</title>
 {% endblock %}
+      <script>
+         $(document).ready(function () {
+            listing();
+         });
+
+         function listing() {
+            $.ajax({
+               type: 'GET',
+               url: '/bc',
+               data: {},
+               success: function (response) {
+
+                  let rows = response['bc']
+
+                  for (let i = 0; i < rows.length; ++i) {
+                     let title1 = rows[i]['title1']
+                     let time1 = rows[i]['time1']
+                     let summary1 = rows[i]['summary1']
+                     console.log(response['bc'])
+
+                     let temp_html = `<a href="/posts/coffee-sugar-chicory-seasonal-espresso-barista-americano"
+                                                     class="blog-title-link w-inline-block">
+                                                     <h1 class="blog-title" >${title1}</h1>
+                                                 </a>
+                                                 <div class="post-info-wrapper">
+                                                     <div class="post-info" >${time1}</div>
+
+                                                 </div>
+                                                 <p class="post-summary" >${summary1}</p>`
+                     $('#news').append(temp_html)
+                  }
+               }
+            })
+         }
+      </script>
 {% block body %}
-블로그
+<header id="header" class="header-section wf-section">
+        <div class="w-container"><a href="/" aria-current="page" class="main-title w--current">TaeCho.vil</a>
+            <p class="main-subheading"> TaeCho village Peoples live Post</p>
+            <div data-delay="200" data-hover="false" data-w-id="6584a19a-5691-0e50-f8da-d2bf173f6d2b"
+                class="dropdown-wrapper w-dropdown" style="">
+                <div class="dropdown-menu w-clearfix w-dropdown-toggle" id="w-dropdown-toggle-0"
+                    aria-controls="w-dropdown-list-0" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0"><img
+                        src="https://uploads-ssl.webflow.com/63712e2439109b7ea30c09d5/63712e2439109b2bc80c0a6b_menu.svg"
+                        width="12" height="12" alt="" class="menu-icon">
+                    <div class="menu-text">Menu</div>
+                </div>
+                <nav class="menu-list w-dropdown-list"
+                    style="transform: translate3d(0px, 20px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 0;"
+                    id="w-dropdown-list-0" aria-labelledby="w-dropdown-toggle-0"><a href="/" aria-current="page"
+                        class="menu-link home w-dropdown-link w--current" tabindex="0">Home</a><a href="/about"
+                        class="menu-link w-dropdown-link" tabindex="0">About</a><a href="/contact"
+                        class="menu-link w-dropdown-link" tabindex="0">Contact</a></nav>
+            </div>
+            <div class="social-link-group">
+                <a href="https://docs.google.com/spreadsheets/d/1y8mohUoAz-6ERVbjLebWKvIE_Jt6Si0lwDTAFDfgVLE/edit#gid=0" class="social-icon-link w-inline-block"><img
+                        src="C:\Taechovil blog\캡처.PNG"
+                        width="25" alt="https://github.com/befunc/TaeCho.vil"></a>
+                <a href="https://github.com/befunc/TaeCho.vil" class="social-icon-link w-inline-block"><img
+                        src="https://uploads-ssl.webflow.com/63712e2439109b7ea30c09d5/63712e2439109b1b6e0c0a1e_social-18.svg"
+                        width="25" alt="https://github.com/befunc/TaeCho.vil"></a>
+                <a href="https://github.com/befunc/TaeCho.vil" class="social-icon-link w-inline-block"><img
+                        src="https://uploads-ssl.webflow.com/63712e2439109b7ea30c09d5/63712e2439109b29350c0a08_social-15.svg"
+                        width="25" alt="https://github.com/befunc/TaeCho.vil"></a>
+
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="w-container">
+                <div class="w-dyn-list">
+                    <div role="list" class="w-dyn-items">
+                        <div role="listitem" class="w-dyn-item">
+                            <div class="post-wrapper"
+                                style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" id="news">
+
+                                <a href="/posts/coffee-sugar-chicory-seasonal-espresso-barista-americano"
+                                    class="button-round w-button">Continue reading →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-wrapper"><a href="/all-posts" class="button w-button">More posts&nbsp;→</a></div>
+            </div>
+        </div>
+    </header>
 {% endblock %}
