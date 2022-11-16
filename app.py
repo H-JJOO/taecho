@@ -29,6 +29,21 @@ def jung():
 def lee():
     return render_template('member_4.html')
 
+
+@app.route("/member_4", methods=["POST"])
+def web_board_post():
+    name_receive = request.form['name_give']
+    message_receive = request.form['message_give']
+
+    doc = {
+        'name': name_receive,
+        'message': message_receive
+    }
+    db.member_4.insert_one(doc)
+
+    return jsonify({'msg': '기록 완료!'})
+
+
 @app.route('/member_5')
 def park():
     return render_template('member_5.html')
