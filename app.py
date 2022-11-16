@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
+import requests
+from bs4 import BeautifulSoup
+
 # index 페이지
 @app.route('/')
 def home():

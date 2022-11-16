@@ -130,6 +130,7 @@ body > main > section.content {
     position: relative;
     overflow: scroll;
     overflow-x: hidden;
+    font-size: 45px;
 }
 
 body > main > section.content::-webkit-scrollbar {
@@ -202,4 +203,26 @@ body > main > section.content > div {
 
 button {
     margin: 10px;
+}
+section > div.intro > img {
+    width: 800px;
+    height: 450px;
+}
+
+section > div.mbti > img {
+    display: block;
+    width: 500px;
+    height: 800px;
+}
+
+.intro {
+    margin-bottom: 50px;
+}
+
+.style {
+    margin-top: 600px;
+}
+
+.style > img {
+    display: block;
 }
