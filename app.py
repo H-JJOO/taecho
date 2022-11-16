@@ -68,8 +68,8 @@ def promise():
 
 
 # 블로그 페이지
-@app.route('/')
-def home():
+@app.route('/blog')
+def blog():
     return render_template('blog.html')
 
 
@@ -79,9 +79,7 @@ def blog_get():
     return jsonify({'bc': blog_list})
 
 
-@app.route('/blog')
-def blog():
-    return render_template('blog.html')
+
 
 
 # 방명록 페이지

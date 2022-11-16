@@ -4,8 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="C:\Taechovil blog\taecho\blog crawling\bc\static\blogcr.css"
-          rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/static/css/blogcr.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -13,7 +12,7 @@
 
 <title>블로그</title>
 {% endblock %}
-      <script>
+    <script>
          $(document).ready(function () {
             listing();
          });
@@ -21,17 +20,17 @@
          function listing() {
             $.ajax({
                type: 'GET',
-               url: '/bc',
+               url: '/taecho',
                data: {},
                success: function (response) {
 
-                  let rows = response['bc']
+                  let rows = response['taecho']
 
                   for (let i = 0; i < rows.length; ++i) {
                      let title1 = rows[i]['title1']
                      let time1 = rows[i]['time1']
                      let summary1 = rows[i]['summary1']
-                     console.log(response['bc'])
+                     console.log(response['taecho'])
 
                      let temp_html = `<a href="/posts/coffee-sugar-chicory-seasonal-espresso-barista-americano"
                                                      class="blog-title-link w-inline-block">
@@ -47,7 +46,7 @@
                }
             })
          }
-      </script>
+    </script>
 {% block body %}
 <header id="header" class="header-section wf-section">
         <div class="w-container"><a href="/" aria-current="page" class="main-title w--current">TaeCho.vil</a>

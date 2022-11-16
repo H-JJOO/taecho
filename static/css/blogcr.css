@@ -5,63 +5,63 @@
     border-bottom: 1px solid #ddd;
     background-color: #f0f0f0;
     text-align: center;
-  }
+}
 
-  .social-button.border {
+.social-button.border {
     padding: 8px;
     border: 1px solid rgba(0, 0, 0, 0.36);
     background-color: transparent;
-  }
-  
-  .social-button.facebook {
-    background-color: #3c5791;
-  }
-  
-  .social-button.twitter {
-    background-color: #29a9e8;
-  }
-  
-  .social-button.red {
-    background-color: #d11529;
-  }
-  
-  .social-button.pink {
-    background-color: #fc488f;
-  }
-  
-  .social-button.pink2 {
-    background-color: #ed1081;
-  }
-  
-  .social-button.orange {
-    background-color: #db4e34;
-  }
-  
-  .social-button.vimeo {
-    background-color: #1ebae7;
-  }
-  
-  .social-button.linkdin {
-    background-color: #1485c3;
-  }
-  
-  .social-button.instagram {
-    background-color: #4b769b;
-  }
-  
-  .social-button.tumblr {
-    background-color: #2e5270;
-  }
-  
-  .social-button.webflow {
-    background-color: #3278bd;
-  }
-  
-  .social-button.medium {
-    background-color: #549f63;
-  }
+}
 
-  .main-title {
+.social-button.facebook {
+    background-color: #3c5791;
+}
+
+.social-button.twitter {
+    background-color: #29a9e8;
+}
+
+.social-button.red {
+    background-color: #d11529;
+}
+
+.social-button.pink {
+    background-color: #fc488f;
+}
+
+.social-button.pink2 {
+    background-color: #ed1081;
+}
+
+.social-button.orange {
+    background-color: #db4e34;
+}
+
+.social-button.vimeo {
+    background-color: #1ebae7;
+}
+
+.social-button.linkdin {
+    background-color: #1485c3;
+}
+
+.social-button.instagram {
+    background-color: #4b769b;
+}
+
+.social-button.tumblr {
+    background-color: #2e5270;
+}
+
+.social-button.webflow {
+    background-color: #3278bd;
+}
+
+.social-button.medium {
+    background-color: #549f63;
+}
+
+.main-title {
     display: block;
     margin-bottom: 15px;
     color: #333;
@@ -69,32 +69,33 @@
     line-height: 40px;
     font-weight: 700;
     text-decoration: none;
-  }
+}
 
-  .content-wrapper {
+.content-wrapper {
     display: block;
     padding-top: 80px;
     padding-bottom: 80px;
     background-color: #fff;
-  }
-  .w-container {
+}
+
+.w-container {
     margin-left: auto;
     margin-right: auto;
     max-width: 940px
-  }
-  
+}
+
 .w-container:before,
 .w-container:after {
-  content: " ";
-  display: table;
-  grid-column-start: 1;
-  grid-row-start: 1;
-  grid-column-end: 2;
-  grid-row-end: 2
+    content: " ";
+    display: table;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-column-end: 2;
+    grid-row-end: 2
 }
 
 .w-container:after {
-  clear: both
+    clear: both
 }
 
 .w-container .w-row {
