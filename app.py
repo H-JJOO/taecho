@@ -22,7 +22,7 @@ def jun():
     return render_template('member_2.html')
 
 @app.route('/member_3')
-def jung():
+def park():
     return render_template('member_3.html')
 
 @app.route('/member_4')
@@ -45,7 +45,7 @@ def web_board_post():
 
 
 @app.route('/member_5')
-def park():
+def jung():
     return render_template('member_5.html')
 # 팀원 한명 한명 페이지
 
