@@ -90,7 +90,7 @@ function save_color() {
         data: {'bodyTextColor_give':bodyTextColor, 'textColor_give':textColor, 'boxColor_give':boxColor},
         success: function (response) {
             alert(response["msg"])
-            window.location.reload()
+            // window.location.reload()
         }
     });
 }
