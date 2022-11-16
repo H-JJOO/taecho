@@ -2,6 +2,11 @@ from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
+from pymongo import MongoClient
+client = MongoClient('mongodb+srv://dadaqq1009:z10091214@cluster0.ooefn7z.mongodb.net/?retryWrites=true&w=majority')
+db = client.dbsparta
+
+
 # index 페이지
 @app.route('/')
 def home():
@@ -28,7 +33,6 @@ def park():
 @app.route('/member_4')
 def lee():
     return render_template('member_4.html')
-
 
 @app.route("/member_4", methods=["POST"])
 def web_board_post():
@@ -63,6 +67,12 @@ def blog():
 @app.route('/board')
 def board():
     return render_template('board.html')
+
+@app.route("/board", methods=["GET"])
+def web_board_get():
+    guest_list4 = list(db.member_4.find({}, {'_id': False}))
+
+    return jsonify({'guests4': guest_list4})
 
 
 if __name__ == '__main__':
