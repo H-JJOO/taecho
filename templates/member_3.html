@@ -8,7 +8,6 @@
     <div class="d-flex flex-row mb-3">
         <img src="/static/images/parkjin.jpg" class="img-thumbnail">
 
-
         <div class="profile ms-3">
             <p class="fs-2">박진(Park Jin)</p>
             <p class="fs-3"><i>"자바스크립트 생태계를 뛰놀고 싶은 남자"</i></p>
@@ -35,6 +34,34 @@
             </p>
         </div>
     </div>
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                    방명록 남기기
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                 data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="mb-3">
+                        <label for="nameInput" class="form-label">이름</label>
+                        <input type="name" class="form-control" id="nameInput"
+                               placeholder="지나가는 개발자">
+                    </div>
+                    <div class="mb-3">
+                        <label for="commentInput" class="form-label">코멘트</label>
+                        <textarea class="form-control" id="commentInput" rows="5" placeholder="잘 하고 있어요!"></textarea>
+                    </div>
+                    <div class="text-end">
+                     <button type="button" class="comment_submit btn btn-primary">방명록 작성</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="card mt-3 ">
         <div class="card-header bg-primary bg-gradient text-white">
             INFP, 진심내면 무섭다구요!
@@ -43,7 +70,7 @@
             <p>INFP는 일단 불이 붙으면 무시무시한 성능을 뽑아낸다고 합니다.</p>
             <p>자기 확신이 부족하여 불발탄이 일어나는 경우가 많지만요.</p>
             <p>잘 하고 있다는 확신을 심어준다면, INFP는 200% 성과를 낼 것입니다!</p>
-             <button type="button" class="btn btn-secondary">넌 잘하고 있어!</button>
+            <button type="button" class="btn btn-secondary">넌 잘하고 있어!</button>
         </div>
     </div>
 
