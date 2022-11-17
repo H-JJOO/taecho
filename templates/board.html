@@ -83,7 +83,7 @@
     }
 
 
-    .container {
+    .neon-lists {
         width: 100%;
         padding-bottom: 60px;
     }
@@ -98,11 +98,10 @@
     }
 
     .list-group {
-        margin-left: 5px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        max-width: 200px;
-        max-height: 200px;
+        margin: 5px auto 5px 18px;
+        max-width: 180px;
+        max-height: 220px;
+
 
     }
 
@@ -118,10 +117,99 @@
 
     }
 
+    .modal-overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(1.5px);
+            -webkit-backdrop-filter: blur(1.5px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+
+                display: none;
+
+
+        }
+
+    .modal-window {
+
+            background: rgba( 69, 139, 197, 0.70 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 13.5px );
+            -webkit-backdrop-filter: blur( 13.5px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+            width: 400px;
+            height: 500px;
+            position: relative;
+            top: -30px;
+            padding: 10px;
+        }
+
+    .title {
+            padding-left: 10px;
+            display: inline;
+            text-shadow: 1px 1px 2px gray;
+            color: white;
+
+        }
+
+      .title h2 {
+            display: inline;
+        }
+
+     .close-area {
+            display: inline;
+            float: right;
+            padding-right: 10px;
+            cursor: pointer;
+            text-shadow: 1px 1px 2px gray;
+            color: white;
+        }
+
+       .content {
+            margin-top: 20px;
+            padding: 0px 10px;
+            text-shadow: 1px 1px 2px gray;
+            color: white;
+        }
+
+
 
 </style>
 <script src="/static/javascript/board.js"></script>
 <script>
+
+    $(document).ready(function () {
+        const modal = document.getElementById("modal")
+        const btnModal = document.getElementById("btn-modal")
+        btnModal.addEventListener("click", e => {
+            modal.style.display = "flex"
+        })
+
+        const closeBtn = modal.querySelector(".close-area")
+        closeBtn.addEventListener("click", e => {
+            modal.style.display = "none"
+        })
+
+        modal.addEventListener("click", e => {
+            const evTarget = e.target
+            if (evTarget.classList.contains("modal-overlay")) {
+                modal.style.display = "none"
+            }
+        })
+    })
+
     function setBoardsHtml(memberId) {
         return function (response) {
             let rows = response['guests']
@@ -135,15 +223,44 @@
                          <div class="list-group" >
                             <a class="list-group-item list-group-item-action">
                                 <div class="d-flex w-100 justify-content-between">
-                                    <p class="mb-1">이름: ${name}</p>
+                                 <p class="mb-1">이름: ${name}</p>
                                 </div>
                                 <h6 class="mb-1">메세지: ${message}</h6>
                             </a>
+                           <div id="container">
+                           <button type="button">❌</button>
+                           <button type="button" id="btn-modal">📝</button>
+                           </div>
+                           <div id="modal" class="modal-overlay">
+        <div class="modal-window">
+            <div class="title">
+                <h2>모달</h2>
+            </div>
+            <div class="close-area">X</div>
+            <div class="content">
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">이름</label>
+                </div>
+
+                <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                  style="height: 100px"></textarea>
+                    <label for="floatingTextarea2"></label>
+                </div>
+
+                <button type="button" class="btn btn-dark" style="margin-top: 20px;">수정하기</button>
+
+            </div>
+
+        </div>
+    </div>
                         </div>
                         </td>
 
                     </tr>`
-                $(`#guest${memberId}-box`).append(temp_html)
+                $(`#guest${memberId}-box`).prepend(temp_html)
             }
         }
     }
@@ -156,86 +273,36 @@
     });
 
     //방명록 여닫는 버튼 코드
+
     $(document).ready(function () {
-        let isShow = true;
-        $('#b1').on('click', function () {
-            if (isShow) {
-                isShow = false;
-                $('#table1').show("slow"),
-                    $('#b1').text('방명록')
 
-            } else {
-                isShow = true;
-                $('#table1').hide("fast");
-                $('#b1').text('주현진 팀장');
+        for (let i = 0; i < 5; i++) {
+            const buttonId = `#b${i+1}`
+            const tableId = `#table${i+1}`
+            const memberName = ['주현진 팀장', '전수빈 팀원', '박진 팀원', '이혜원 팀원', '정성훈 팀원']
+            let isShow = true;
+            $(buttonId).on('click', function () {
+                if (isShow) {
+                    isShow = false;
+                    $(tableId).show("slow"),
+                        $(buttonId).text('방명록')
 
-            }
-        })
+                } else {
+                    isShow = true;
+                    $(tableId).hide("fast");
+                    $(buttonId).text(memberName[i]);
+
+                }
+            })
+        }
+
+
     })
-    $(document).ready(function () {
-        let isShow = true;
-        $('#b2').on('click', function () {
-            if (isShow) {
-                isShow = false;
-                $('#table2').show("slow"),
-                    $('#b2').text('방명록')
 
-            } else {
-                isShow = true;
-                $('#table2').hide("fast");
-                $('#b2').text('전수빈 팀원');
 
-            }
-        })
-    })
-    $(document).ready(function () {
-        let isShow = true;
-        $('#b3').on('click', function () {
-            if (isShow) {
-                isShow = false;
-                $('#table3').show("slow"),
-                    $('#b3').text('방명록')
 
-            } else {
-                isShow = true;
-                $('#table3').hide("fast");
-                $('#b3').text('박진 팀원');
 
-            }
-        })
-    })
-    $(document).ready(function () {
-        let isShow = true;
-        $('#b4').on('click', function () {
-            if (isShow) {
-                isShow = false;
-                $('#table4').show("slow"),
-                    $('#b4').text('방명록')
 
-            } else {
-                isShow = true;
-                $('#table4').hide("fast");
-                $('#b4').text('이혜원 팀원');
-
-            }
-        })
-    })
-    $(document).ready(function () {
-        let isShow = true;
-        $('#b5').on('click', function () {
-            if (isShow) {
-                isShow = false;
-                $('#table5').show("slow"),
-                    $('#b5').text('방명록')
-
-            } else {
-                isShow = true;
-                $('#table5').hide("fast");
-                $('#b5').text('정성훈 팀원');
-
-            }
-        })
-    })
 
 
 </script>
@@ -245,13 +312,13 @@
 
 {% block body %}
 
-<div class="container">
+<div class="neon-lists">
     <div class="row row-cols-5">
         <div class="col">
             <button class="w-btn-neon2" type="button" id="b1">
                 주현진 팀장
             </button>
-            <table class="table" id="table1">
+            <table class="table1" id="table1">
                 <thead>
                 </thead>
                 <tbody id="guest1-box">
@@ -262,7 +329,7 @@
             <button class="w-btn-neon2" type="button" id="b2">
                 전수빈 팀원
             </button>
-            <table class="table" id="table2">
+            <table class="table2" id="table2">
                 <thead>
                 </thead>
                 <tbody id="guest2-box">
@@ -273,7 +340,7 @@
             <button class="w-btn-neon2" type="button" id="b3">
                 박진 팀원
             </button>
-            <table class="table" id="table3">
+            <table class="table3" id="table3">
                 <thead>
                 </thead>
                 <tbody id="guest3-box">
@@ -296,7 +363,7 @@
             <button class="w-btn-neon2" type="button" id="b5">
                 정성훈 팀원
             </button>
-            <table class="table" id="table5">
+            <table class="table5" id="table5">
                 <thead>
                 </thead>
                 <tbody id="guest5-box">
@@ -305,4 +372,46 @@
         </div>
     </div>
 </div>
+
+
+
+<div id="container">
+    <button type="button" id="btn-modal">📝</button>
+</div>
+
+<div id="modal" class="modal-overlay">
+        <div class="modal-window">
+            <div class="title">
+                <h2>모달</h2>
+            </div>
+            <div class="close-area">X</div>
+            <div class="content">
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">이름</label>
+                </div>
+
+                <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                  style="height: 100px"></textarea>
+                    <label for="floatingTextarea2"></label>
+                </div>
+
+                <button type="button" class="btn btn-dark" style="margin-top: 20px;">수정하기</button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+
+
+    </script>
+
 {% endblock %}
+
+
+
