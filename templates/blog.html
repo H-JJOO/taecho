@@ -18,21 +18,21 @@
          });
 
          function listing() {
-            $.ajax({
-               type: 'GET',
-               url: '/taecho',
-               data: {},
-               success: function (response) {
+             $.ajax({
+                 type: 'GET',
+                 url: '/blog',
+                 data: {},
+                 success: function (response) {
 
-                  let rows = response['taecho']
+                     let rows = response['blog']
 
-                  for (let i = 0; i < rows.length; ++i) {
-                     let title1 = rows[i]['title1']
-                     let time1 = rows[i]['time1']
-                     let summary1 = rows[i]['summary1']
-                     console.log(response['taecho'])
+                     for (let i = 0; i < rows.length; ++i) {
+                         let title1 = rows[i]['title1']
+                         let time1 = rows[i]['time1']
+                         let summary1 = rows[i]['summary1']
+                         console.log(response['blog'])
 
-                     let temp_html = `<a href="/posts/coffee-sugar-chicory-seasonal-espresso-barista-americano"
+                         let temp_html = `<a href="/posts/coffee-sugar-chicory-seasonal-espresso-barista-americano"
                                                      class="blog-title-link w-inline-block">
                                                      <h1 class="blog-title" >${title1}</h1>
                                                  </a>
@@ -41,15 +41,15 @@
 
                                                  </div>
                                                  <p class="post-summary" >${summary1}</p>`
-                     $('#news').append(temp_html)
-                  }
-               }
-            })
+                         $('#news').append(temp_html)
+                     }
+                 }
+             })
          }
     </script>
 {% block body %}
 <header id="header" class="header-section wf-section">
-        <div class="w-container"><a href="/" aria-current="page" class="main-title w--current">TaeCho.vil</a>
+        <div class="w-container"><a href="/templates/index.html" aria-current="page" class="main-title w--current">TaeCho.vil</a>
             <p class="main-subheading"> TaeCho village Peoples live Post</p>
             <div data-delay="200" data-hover="false" data-w-id="6584a19a-5691-0e50-f8da-d2bf173f6d2b"
                 class="dropdown-wrapper w-dropdown" style="">

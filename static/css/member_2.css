@@ -1,0 +1,63 @@
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.jb-box {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 150px auto;
+    position: relative;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+}
+
+.jb-text { position: absolute;
+            top: 50%;
+            width: 100%;
+
+
+}
+
+
+.jb-text p {
+    margin-top: -24px;
+    text-align: center;
+    font-size: 80px;
+    color: #ffffff;
+}
+
+
+
+
+
+.jb-text h2 {
+    @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+    margin-top: -24px;
+    text-align: center;
+    font-size: 48px;
+    color: #ffffff;
+    font-family: 'Jeju Gothic', sans-serif;
+    font-size: 6em;
+    text-align: justify;
+    color: white;
+    z-index: 1;
+    mix-blend-mode: overlay;
+
+}
+
+
+.jb-text h4 {
+    @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+    font-family: 'Jeju Gothic', sans-serif;
+    font-size: 2em;
+    text-align: justify;
+    color: white;
+    z-index: 3;
+    mix-blend-mode: overlay;
+}
+

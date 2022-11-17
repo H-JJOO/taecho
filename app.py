@@ -73,10 +73,10 @@ def blog():
     return render_template('blog.html')
 
 
-@app.route("/bc", methods=["GET"])
+@app.route("/blog", methods=["GET"])
 def blog_get():
     blog_list = list(db.TaechoBlog.find({}, {'_id': False}))
-    return jsonify({'bc': blog_list})
+    return jsonify({'blog': blog_list})
 
 
 
