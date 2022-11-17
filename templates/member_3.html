@@ -2,6 +2,24 @@
 {% block head %}
 <link rel="stylesheet" href="/static/css/member_3.css">
 <title>박진</title>
+<script src="{{url_for('static', filename='javascript/board.js')}}"></script>
+<script>
+    function create() {
+        const name = $("#nameInput").val();
+        const message = $("#commentInput").val();
+
+        const memberId = 3
+        const data = {
+            name: name || '지나가는 개발자',
+            message: message || '잘 하고 있어요!'
+        }
+
+        requestPostBoards(memberId, data, (response) => {
+            alert(response['msg'])
+            window.location.reload()
+        })
+    }
+</script>
 {% endblock %}
 {% block body %}
 <div class="container mt-3 pb-5">
@@ -39,7 +57,7 @@
             <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                         aria-expanded="true" aria-controls="collapseOne">
-                    방명록 남기기
+                   방명록 남기기
                 </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
@@ -55,7 +73,7 @@
                         <textarea class="form-control" id="commentInput" rows="5" placeholder="잘 하고 있어요!"></textarea>
                     </div>
                     <div class="text-end">
-                        <button type="button" class="comment_submit btn btn-primary">방명록 작성</button>
+                        <button type="button" class="comment_submit btn btn-primary" onclick="create()">방명록 작성</button>
                         <button type="button" class="commnet_cancel btn btn-light" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne"
                                 aria-expanded="true" aria-controls="collapseOne">닫기
