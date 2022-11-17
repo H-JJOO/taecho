@@ -157,85 +157,30 @@
     //방명록 여닫는 버튼 코드
 
     $(document).ready(function () {
-        let isShow = true;
-        $('#b1').on('click', function () {
-            if (isShow) {
-                isShow = false;
-                $('#table1').show("slow"),
-                    $('#b1').text('방명록')
 
-            } else {
-                isShow = true;
-                $('#table1').hide("fast");
-                $('#b1').text('주현진 팀장');
+        for (let i = 0; i < 5; i++) {
+            const buttonId = `#b${i+1}`
+            const tableId = `#table${i+1}`
+            const memberName = ['주현진 팀장', '전수빈 팀원', '박진 팀원', '이혜원 팀원', '정성훈 팀원']
+            let isShow = true;
+            $(buttonId).on('click', function () {
+                if (isShow) {
+                    isShow = false;
+                    $(tableId).show("slow"),
+                        $(buttonId).text('방명록')
 
-            }
-        })
+                } else {
+                    isShow = true;
+                    $(tableId).hide("fast");
+                    $(buttonId).text(memberName[i]);
+
+                }
+            })
+        }
+
+
     })
-    $(document).ready(function () {
-        let isShow = true;
-        $('#b2').on('click', function () {
-            if (isShow) {
-                isShow = false;
-                $('#table2').show("slow"),
-                    $('#b2').text('방명록')
 
-            } else {
-                isShow = true;
-                $('#table2').hide("fast");
-                $('#b2').text('전수빈 팀원');
-
-            }
-        })
-    })
-    $(document).ready(function () {
-        let isShow = true;
-        $('#b3').on('click', function () {
-            if (isShow) {
-                isShow = false;
-                $('#table3').show("slow"),
-                    $('#b3').text('방명록')
-
-            } else {
-                isShow = true;
-                $('#table3').hide("fast");
-                $('#b3').text('박진 팀원');
-
-            }
-        })
-    })
-    $(document).ready(function () {
-        let isShow = true;
-        $('#b4').on('click', function () {
-            if (isShow) {
-                isShow = false;
-                $('#table4').show("slow"),
-                    $('#b4').text('방명록')
-
-            } else {
-                isShow = true;
-                $('#table4').hide("fast");
-                $('#b4').text('이혜원 팀원');
-
-            }
-        })
-    })
-    $(document).ready(function () {
-        let isShow = true;
-        $('#b5').on('click', function () {
-            if (isShow) {
-                isShow = false;
-                $('#table5').show("slow"),
-                    $('#b5').text('방명록')
-
-            } else {
-                isShow = true;
-                $('#table5').hide("fast");
-                $('#b5').text('정성훈 팀원');
-
-            }
-        })
-    })
 
 
 </script>
