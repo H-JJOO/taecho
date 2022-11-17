@@ -1,0 +1,45 @@
+/*기본 색깔 및 구성*/
+
+/*사용할 색이나 사이즈 등을 사전에 저장해서 통일성을 준다*/
+
+:root {
+    --global-background-color: #ddfdfd;
+    --global-color: #10151a;
+    --global-font-size: 0.9rem;
+    --global-font-weight: 400;
+
+    --profile-background-color: #ffe798;
+    --profile-color: #fafcff;
+
+    --content-background-color: #ffffff;
+    --content-border-radius: 2rem;
+    --content-padding: 2rem;
+
+    --nav-item-padding: 0.75rem 1.25rem;
+
+
+}
+
+ul {
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+}
+
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--global-background-color);
+    color: var(--global-color);
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: var(--global-font-size);
+    font-weight: var(--global-font-weight);
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+
+}

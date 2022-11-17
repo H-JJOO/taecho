@@ -1,9 +1,136 @@
 {% extends 'index.html' %}
 {% block head %}
+<link rel="stylesheet" href="/static/css/member_1.css">
+<link rel="stylesheet" href="/css/member_1.css">
+<link rel="stylesheet" href="/static/css/common.css">
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
+<script src="/static/javascript/board.js"></script>
+<script src="/static/javascript/member_1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+</script>
 <title>주현진</title>
 {% endblock %}
 {% block body %}
-주현진
+
+<section class="profile">
+
+    <div class="profile-image">
+        <img alt src="/static/images/hyeonjin/face.PNG">
+    </div>
+
+    <span class="name">[A Developing Developer]</span>
+    <span class="name">Hyeonjin Joo</span>
+    <span class="name">icepri3535@gmail.com</span>
+
+    <button><a href="https://github.com/H-JJOO" goals="_blank"><img src="/static/images/hyeonjin/github.png" alt=""
+                                                                    id="github"></a></button>
+    <button><a href="https://icepri3535.tistory.com/" goals="_blank"><img src="/static/images/hyeonjin/tistory.svg"
+                                                                          alt="" id="tistory"></a></button>
+
+</section>
+
+<section class="content" id="content">
+
+    <div class="intro" id="intro">
+        <p>
+            [INTRO]
+        </p>
+        <p>성장하는 개발자가 되고 싶은 주현진입니다.</p>
+        <img src="/static/images/hyeonjin/blog.PNG" alt="">
+        <p>TISTORY 대문에도 걸어놓은 다짐입니다.</p>
+    </div>
+
+    <div class="mbti" id="mbti">
+        <p>[MBTI]</p>
+        <img src="/static/images/hyeonjin/mbti_isfj.png" alt="">
+        <q>사랑은 남과 나눌 때 커진다. 더 많은 사랑을 받는 유일한 방법은 다른 사람에게 사랑을 베푸는 것이다.</q>
+        <i>-브라이언 트레이시-</i>
+        <br>
+        <br>
+        <p>노력해보겠습니다...</p>
+        <br>
+    </div>
+
+    <div class="style" id="style">
+        [STYLE]
+        <img src="/static/images/hyeonjin/lazy.webp" alt="">
+        <p>네... 보시는 그대롭니다...</p>
+        <p>좀 게으릅니다.</p>
+        <p>아! 그래도 맡은바 역할은 절대로 수행하도록 노력합니다!</p>
+        <p>특징이자 단점인데, 이번 내배캠4기 과정을 통해서 극복해보겠습니다.</p>
+
+    </div>
+
+    <div class="board" id="board">
+        <p style="font-family: 'Dongle', sans-serif; font-size: 45px">[방명록]</p>
+        <div class="accordion" id="comment-accordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                        방명록 남기기
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                     data-bs-parent="#comment-accordion">
+                    <div class="accordion-body">
+                        <div class="mb-1">
+                            <label for="nameInput" class="form-label">이름</label>
+                            <input type="name" class="form-control" id="nameInput"
+                                   placeholder="GUEST">
+                        </div>
+                        <div class="mb-1">
+                            <label for="commentInput" class="form-label">코멘트</label>
+                            <textarea class="form-control" id="commentInput" rows="5"
+                                      placeholder="WOW!"></textarea>
+                        </div>
+                        <div class="text-end">
+                            <button type="button" class="comment_submit btn btn-primary" onclick="create()">방명록 작성
+                            </button>
+                            <button type="button" class="commnet_cancel btn btn-light" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">닫기
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<!--    navigator-->
+<nav>
+    <ul>
+        <li>
+            <a href="#intro">
+                <img alt="intro" src="/static/images/hyeonjin/intro.png" title="intro">
+            </a>
+        </li>
+        <li>
+            <a href="#mbti">
+                <img alt="mbti" src="/static/images/hyeonjin/mbti.png" title="mbti">
+            </a>
+        </li>
+        <li>
+            <a href="#style">
+                <img alt="style" src="/static/images/hyeonjin/style.png" title="style">
+            </a>
+        </li>
+        <li>
+            <a href="#board">
+                <img alt="board" src="/static/images/hyeonjin/board.png" title="board">
+            </a>
+        </li>
+    </ul>
+</nav>
+<!--    navigator-->
 {% endblock %}
 
 
