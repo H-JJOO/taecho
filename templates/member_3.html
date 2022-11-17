@@ -2,30 +2,6 @@
 {% block head %}
 <link rel="stylesheet" href="/static/css/member_3.css">
 <title>박진</title>
-<script>
-        function write_book() {
-
-        let name = $('#floatingInput').val()
-        let message = $('#floatingTextarea2').val()
-
-        if (name === '') {
-        alert('이름을 써주세요!')
-    }
-        if (message === '') {
-        alert('메세지를 남겨주세요!')
-    } else $.ajax({
-        type: 'POST',
-        url: '/api/boards/3',
-        data: {name_give: name, message_give: message},
-        success: function (response) {
-        alert(response['msg'])
-        window.location.reload()
-    }
-    });
-
-    }
-
-</script>
 {% endblock %}
 {% block body %}
 <div class="container mt-3 pb-5">
