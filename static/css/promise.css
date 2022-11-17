@@ -38,7 +38,39 @@
     font-size: 20px;
 }
 
-.promise > .scratch {
+.scratch-container {
     position: absolute;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+
+.popup {
+    display: none;
+}
+
+.scratch {
     opacity: 0.6;
+}
+
+.scratch-container:hover + .popup {
+    position: absolute;
+    display: block;
+    font-size: 64px;
+    width: 90%;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    opacity: 1.0 !important;
+}
+
+.input-box {
+    margin: 0 auto;
+    width: 60%;
+}
+
+button {
+    width: 100%;
 }

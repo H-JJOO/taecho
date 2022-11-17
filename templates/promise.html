@@ -17,11 +17,23 @@
     }
 
     function create() {
-        const content = $('#promiseInput').val()
-        requestPostPromises({name: 'test', content: content, promise_style: randomizePromiseStyle()}, (response) => {
+        const name = $('#nameInput').val();
+        const content = $('#promiseInput').val();
+        if (name.length > 10 || content.length > 50) {
+            alert("너무 길어요.")
+            return ;
+        }
+        requestPostPromises({name: name, content: content, promise_style: randomizePromiseStyle()}, (response) => {
             alert(response['msg'])
             window.location.reload()
         })
+    }
+
+    function clickPromise(id) {
+        // requestDeletePromises(id, (response) => {
+        //     alert(response['msg'])
+        //     window.location.reload()
+        // })
     }
 </script>
 {% endblock %}
@@ -32,10 +44,29 @@
         <p>팀플레이에 적극적이자.</p>
         <p class="confirm">당신의 약속도 남겨보세요.</p>
         {% for item in template_promises %}
-        <p class="scratch" style="{{ item.promiseStyle }}">{{ item.content }}!</p>
+        <div class="scratch-container" style="{{ item.promiseStyle }}" onclick="clickPromise('{{ item._id }}')">
+            <p class="scratch">{{ item.content }}!</p>
+
+        </div>
+        <div class="popup">
+            <p>{{ item.content }}!</p>
+            <p>- {{item.name}}</p>
+        </div>
         {% endfor %}
     </div>
 </div>
-    <input type="text" id="promiseInput"/>
-    <button onclick="create()">새기기</button>
+
+<div class="container-sm">
+    <div class="input-box">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nameInput">
+            <label for="nameInput">이름</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="promiseInput">
+            <label for="promiseInput">약속</label>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="create()">새기기</button>
+    </div>
+</div>
 {% endblock %}

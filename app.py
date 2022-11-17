@@ -143,7 +143,7 @@ def api_promises():
         db[col_name].delete_one({'_id': ObjectId(promise_id)})
         return jsonify({'msg': '삭제 완료!'})
     else:
-        promise_list = objectIdDecoder(list(db[col_name].find({}).limit(200)))
+        promise_list = objectIdDecoder(list(db[col_name].find({}).sort("_id", -1).limit(200)))
         return jsonify({'promise_list': promise_list})
 
 if __name__ == '__main__':
