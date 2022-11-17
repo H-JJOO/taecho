@@ -226,3 +226,9 @@ section > div.mbti > img {
 .style > img {
     display: block;
 }
+
+#board {
+    font-family: "한컴 고딕";
+    font-size: 20px;
+
+}
