@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from bson.objectid import ObjectId
-
+from datetime import datetime
 app = Flask(__name__)
 from pymongo import MongoClient
 
@@ -87,7 +87,6 @@ def objectIdDecoder(list):
         results.append(document)
     return results
 
-# @app.route("/api/boards/<member_id>", methods=["POST", "GET"])
 @app.route("/api/boards/<member_id>", methods=["POST", "GET", "PUT", "DELETE"])
 def api_boards(member_id):
     col_name = 'member_' + member_id
@@ -113,6 +112,38 @@ def api_boards(member_id):
     else:
         guest_list = objectIdDecoder(list(db[col_name].find({})))
         return jsonify({'guests': guest_list})
+
+
+@app.route("/api/promises", methods=["GET", "POST", "PUT", "DELETE"])
+def api_promises():
+    col_name = 'promises'
+    now = datetime.now()
+    if request.method == "POST":
+        name = request.form['name']
+        content = request.form['promise']
+        promise_style = request.form['promise_style']
+        doc = {
+            "name": name,
+            "promise": content,
+            "promiseStyle": promise_style,
+            "createdAt": now
+        }
+        db[col_name].insert_one(doc)
+        return jsonify({'msg': '약속을 새겼다!'})
+    elif request.method == "PUT":
+        promise_id = request.form['id']
+        content = request.form['promise']
+        db[col_name].update_one({'_id': ObjectId(promise_id)},
+                                {'$set': {'promise': content, 'createdAt': now
+                                          }})
+        return jsonify({'msg': '약속은 바뀌는거야!'})
+    elif request.method == "DELETE":
+        promise_id = request.form['id']
+        db[col_name].delete_one({'_id': ObjectId(promise_id)})
+        return jsonify({'msg': '삭제 완료!'})
+    else:
+        promise_list = objectIdDecoder(list(db[col_name].find({}).limit(200)))
+        return jsonify({'promise_list': promise_list})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
