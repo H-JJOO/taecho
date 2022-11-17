@@ -7,7 +7,7 @@
  *
  * function create() {
  *      const name = $("이름 입력칸의 selector").val();
- *      const message = ${"내용 입력칸의 selector"}.val();
+ *      const message = $("내용 입력칸의 selector").val();
  *
  *      const memberId = 3  <== 박진의 Id
  *      const data = {
