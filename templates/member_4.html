@@ -108,6 +108,7 @@
     }
 
 </style>
+<script src="/static/javascript/board.js"></script>
 <script>
     function open_book() {
         $('#book-box').show()
@@ -124,21 +125,24 @@
 
         if (name === '') {
             alert('이름을 써주세요!')
+            return ;
         }
         if (message === '') {
             alert('메세지를 남겨주세요!')
-        } else $.ajax({
-            type: 'POST',
-            url: '/api/boards/4',
-            data: {name_give: name, message_give: message},
-            success: function (response) {
-                alert(response['msg'])
+            return ;
+        }
+
+        const memberId = 4;
+        const data = {
+            name: name,
+            message: message
+        };
+        requestPostBoards(memberId, data, (response) => {
+             alert(response['msg'])
                 window.location.reload()
-            }
-        });
+        })
 
     }
-
     </script>
 {% endblock %}
 
