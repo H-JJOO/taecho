@@ -90,8 +90,8 @@ let temp_html_post = `<div class="mypost" id="postBox">
                             <label for="floatingTextarea2">comment</label>
                         </div>
                    
-                        <button onclick="write_book()" onclick="openBox()" type="button" id="Confirmbutton">Confirm</button>
-                        <button onclick="closePostBox()" onclick="openBox()" type="button" id="backbutton">Back</button>
+                        <button onclick="write_book()" type="button" id="Confirmbutton">Confirm</button>
+                        <button onclick="closePostBox()" type="button" id="backbutton">Back</button>
                     </div>
                     `
 let temp_html_main = `<div id="mainbox">  
@@ -139,3 +139,24 @@ function closePostBox() {
     $('#box').append(temp_html_main)
 }
 
+function write_book() {
+
+    let name = $('#name').val()
+    let message = $('#comment').val()
+
+    if (name === '') {
+        alert('이름을 써주세요!')
+    }
+    if (message === '') {
+        alert('메세지를 남겨주세요!')
+    } 
+    else $.ajax({
+        type: 'POST',
+        url: '/api/boards/member_5',
+        data: {name_give: name, message_give: message},
+        success: function (response) {
+            alert(response['msg'])
+            window.location.reload()
+        }
+    });
+}
