@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 from pymongo import MongoClient
@@ -126,23 +127,39 @@ def blog_get():
 def board():
     return render_template('board.html')
 
+
+def objectIdDecoder(list):
+    results=[]
+    for document in list:
+        document['_id'] = str(document['_id'])
+        results.append(document)
+    return results
+
 # @app.route("/api/boards/<member_id>", methods=["POST", "GET"])
-@app.route("/api/boards/<member_id>", methods=["POST", "GET"])
+@app.route("/api/boards/<member_id>", methods=["POST", "GET", "PUT", "DELETE"])
 def api_boards(member_id):
+    col_name = 'member_' + member_id
     if request.method == "POST":
-        name_receive = request.form['name_give']
-        message_receive = request.form['message_give']
+        name = request.form['name']
+        message = request.form['message']
 
         doc = {
-            'name': name_receive,
-            'message': message_receive
+            'name': name,
+            'message': message
         }
-        col_name = 'member_' + member_id
         db[col_name].insert_one(doc)
         return jsonify({'msg': '기록 완료!'})
+    elif request.method == "PUT":
+        board_id = request.form['id']
+        message = request.form['message']
+        db[col_name].update_one({'_id': ObjectId(board_id)}, {'$set': {'message': message}})
+        return jsonify({'msg': '수정 완료!'})
+    elif request.method == "DELETE":
+        board_id = request.form['id']
+        db[col_name].delete_one({'_id': ObjectId(board_id)})
+        return jsonify({'msg': '삭제 완료!'})
     else:
-        col_name = 'member_' + member_id
-        guest_list = list(db[col_name].find({}, {'_id': False}))
+        guest_list = objectIdDecoder(list(db[col_name].find({})))
         return jsonify({'guests': guest_list})
 
 if __name__ == '__main__':
