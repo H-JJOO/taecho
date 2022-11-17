@@ -19,7 +19,7 @@
         alert('메세지를 남겨주세요!')
     } else $.ajax({
         type: 'POST',
-        url: '/member_1',
+        url: '/api/boards/1',
         data: {name_give: name, message_give: message},
         success: function (response) {
             alert(response['msg'])
