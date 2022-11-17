@@ -2,8 +2,6 @@ from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
-
-
 import requests
 from bs4 import BeautifulSoup
 
@@ -38,7 +36,6 @@ def park():
 def lee():
     return render_template('member_4.html')
 
-
 @app.route("/member_4", methods=["POST"])
 def web_board_post():
     name_receive = request.form['name_give']
@@ -56,23 +53,6 @@ def web_board_post():
 @app.route('/member_5')
 def jung():
     return render_template('member_5.html')
-
-# @app.route('/member_5')
-# def jung_set_color_post():
-#     backgroundColor_receive = request.form["backgroundColor_give"]
-#     textColor_receive       = request.form["textColor_give"]
-#     boxColor_receive        = request.form["boxColor_give"]
-
-#     doc = {
-#         'backgroundColor': backgroundColor_receive,
-#         'textColor': textColor_receive,
-#         'boxColor': boxColor_receive
-#     }
-
-#     db.member_5.insert_one(doc)
-#     return render_template({'msg':'Color change!'})
-
-
 
 
 # 팀원 한명 한명 페이지

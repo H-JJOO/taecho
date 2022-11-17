@@ -1,6 +1,7 @@
 
 // -<chageColors>- //
 
+// --------------------
 // -<Background>-------------------------------------------------------------------------------- //
 const BackgroundColorChange = document.getElementById("inputBgColor") 
 const BODY = document.querySelector(".body")
@@ -14,6 +15,7 @@ BackgroundColorChange.onchange = function(){
 }
 
 const savedBgColor = localStorage.getItem(BGCOLOR_KEY);    //localStorage
+
 
 if (savedBgColor === null) {
     BODY.style.backgroundColor = "#ffffff";
@@ -33,7 +35,7 @@ TextColorChange.onchange = function(){
 
     const inputTextColorValue = this.value;                 
     localStorage.setItem(TEXTCOLOR_KEY, inputTextColorValue); 
-
+    
     console.log(this.value);  
 }
 
@@ -72,35 +74,6 @@ if (savedBoxColor === null) {
     BoxColor.style.backgroundColor = savedBoxColor;
     BoxColorChange.value = savedBoxColor
 }
-
-
-// --------------------
-function save_color() {
-    let bodyTextColor = savedBgColor
-    let textColor     = savedTextColor
-    let boxColor      = savedBoxColor
-
-    console.log(bodyTextColor+" !")
-    console.log(textColor+" !")
-    console.log(boxColor+" !")
-
-    $.ajax({
-        type: "POST",
-        url: "/member_5",
-        data: {'bodyTextColor_give':bodyTextColor, 'textColor_give':textColor, 'boxColor_give':boxColor},
-        success: function (response) {
-            alert(response["msg"])
-            // window.location.reload()
-        }
-    });
-}
-
-
-
-
-
-
-
 
 
 
