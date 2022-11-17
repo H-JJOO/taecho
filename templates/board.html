@@ -189,13 +189,38 @@
 </style>
 <script src="/static/javascript/board.js"></script>
 <script>
+    let selectedMemberId = 0
+    let selectedId
+    let modal
 
-    $(document).ready(function () {
-        const modal = document.getElementById("modal")
-        const btnModal = document.getElementById("btn-modal")
-        btnModal.addEventListener("click", e => {
-            modal.style.display = "flex"
+    function showModal(memberId, id) {
+        selectedMemberId = memberId
+        selectedId = id
+        modal.style.display = "flex"
+    }
+
+    function hideModal() {
+        selectedMemberId = 0
+         modal.style.display = "none"
+    }
+
+    function modify() {
+        const message = $('#floatingTextarea2').val()
+        requestPutBoards(selectedMemberId, {id: selectedId, message: message}, (response) => {
+            alert(response['msg'])
+            window.location.reload();
         })
+    }
+
+    function deleteBoard(memberId, id) {
+        requestDeleteBoards(memberId, id, (response) => {
+            alert(response['msg'])
+            window.location.reload();
+        } )
+    }
+
+   $(document).ready(function () {
+        modal = document.getElementById("modal")
 
         const closeBtn = modal.querySelector(".close-area")
         closeBtn.addEventListener("click", e => {
@@ -216,6 +241,7 @@
             for (let i = 0; i < rows.length; i++) {
                 let name = rows[i]['name']
                 let message = rows[i]['message']
+                let id = rows[i]['_id']
 
                 let temp_html =
                     ` <tr>
@@ -228,35 +254,9 @@
                                 <h6 class="mb-1">메세지: ${message}</h6>
                             </a>
                            <div id="container">
-                           <button type="button">❌</button>
-                           <button type="button" id="btn-modal">📝</button>
+                           <button type="button" onclick="deleteBoard(${memberId}, '${id}')">❌</button>
+                           <button type="button" class="btn-modal" onclick="showModal(${memberId}, '${id}')">📝</button>
                            </div>
-                           <div id="modal" class="modal-overlay">
-        <div class="modal-window">
-            <div class="title">
-                <h2>모달</h2>
-            </div>
-            <div class="close-area">X</div>
-            <div class="content">
-
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">이름</label>
-                </div>
-
-                <div class="form-floating">
-        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                  style="height: 100px"></textarea>
-                    <label for="floatingTextarea2"></label>
-                </div>
-
-                <button type="button" class="btn btn-dark" style="margin-top: 20px;">수정하기</button>
-
-            </div>
-
-        </div>
-    </div>
-                        </div>
                         </td>
 
                     </tr>`
@@ -373,12 +373,6 @@
     </div>
 </div>
 
-
-
-<div id="container">
-    <button type="button" id="btn-modal">📝</button>
-</div>
-
 <div id="modal" class="modal-overlay">
         <div class="modal-window">
             <div class="title">
@@ -398,7 +392,7 @@
                     <label for="floatingTextarea2"></label>
                 </div>
 
-                <button type="button" class="btn btn-dark" style="margin-top: 20px;">수정하기</button>
+                <button type="button" class="btn btn-dark" style="margin-top: 20px;" onclick="modify()">수정하기</button>
 
             </div>
 
