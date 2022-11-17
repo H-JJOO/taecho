@@ -56,7 +56,8 @@ def jung():
 # 팀 약속 페이지
 @app.route('/promise')
 def promise():
-    return render_template('promise.html')
+    promise_list = objectIdDecoder(list(db.promises.find({}).limit(200)))
+    return render_template('promise.html', template_promises=promise_list)
 
 
 # 블로그 페이지
@@ -120,11 +121,11 @@ def api_promises():
     now = datetime.now()
     if request.method == "POST":
         name = request.form['name']
-        content = request.form['promise']
+        content = request.form['content']
         promise_style = request.form['promise_style']
         doc = {
             "name": name,
-            "promise": content,
+            "content": content,
             "promiseStyle": promise_style,
             "createdAt": now
         }
@@ -132,9 +133,9 @@ def api_promises():
         return jsonify({'msg': '약속을 새겼다!'})
     elif request.method == "PUT":
         promise_id = request.form['id']
-        content = request.form['promise']
+        content = request.form['content']
         db[col_name].update_one({'_id': ObjectId(promise_id)},
-                                {'$set': {'promise': content, 'createdAt': now
+                                {'$set': {'content': content, 'createdAt': now
                                           }})
         return jsonify({'msg': '약속은 바뀌는거야!'})
     elif request.method == "DELETE":

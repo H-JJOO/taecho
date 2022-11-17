@@ -9,14 +9,16 @@
     max-height: 680px;
     border-radius: 30% 30% 0 0;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/static/images/stone.jpg");
-    background-size: cover;
 }
 
 .promise {
     position: absolute;
     text-align: center;
+    align-items: center;
     top: 50%;
     left: 50%;
+    width: 95%;
+    height: 95%;
     transform: translate(-50%, -50%);
     font-family: "Nanum Brush Script", cursive;
     color: white;
@@ -38,4 +40,5 @@
 
 .promise > .scratch {
     position: absolute;
+    opacity: 0.6;
 }

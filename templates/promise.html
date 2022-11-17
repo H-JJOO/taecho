@@ -2,15 +2,40 @@
 {% block head %}
 <link rel="stylesheet" href="/static/css/promise.css">
 <title>팀 약속</title>
+<script src="/static/javascript/promise.js"></script>
+<script>
+    function randomizeNumber(min, max) {
+        return Math.random() * (max - min) + min
+    }
+
+    function randomizeInt(min, max) {
+        return Math.floor(Math.random() * (max - min) + min)
+    }
+
+    function randomizePromiseStyle() {
+        return `font-size: ${randomizeInt(18, 24)}px; top: ${randomizeNumber(0, 100)}%; left: ${randomizeNumber(0, 100)}%; transform: rotate(${randomizeInt(-15, 15)}deg);`
+    }
+
+    function create() {
+        const content = $('#promiseInput').val()
+        requestPostPromises({name: 'test', content: content, promise_style: randomizePromiseStyle()}, (response) => {
+            alert(response['msg'])
+            window.location.reload()
+        })
+    }
+</script>
 {% endblock %}
 {% block body %}
 <div class="back">
     <div class="promise">
-        <p>태초의 약속.</p>
-        <p>하나, 팀플레이에 적극적이자.</p>
-        <p class="confirm">약속은 지켰나요?</p>
-        <p class="confirm">(지켜보고 있다.)</p>
-        <p class="scratch" style="font-size: 12px; top: -45px; transform: rotate(25deg);">기록했어요!</p>
+        <p>태초의 약속</p>
+        <p>팀플레이에 적극적이자.</p>
+        <p class="confirm">당신의 약속도 남겨보세요.</p>
+        {% for item in template_promises %}
+        <p class="scratch" style="{{ item.promiseStyle }}">{{ item.content }}!</p>
+        {% endfor %}
     </div>
 </div>
+    <input type="text" id="promiseInput"/>
+    <button onclick="create()">새기기</button>
 {% endblock %}
