@@ -1,0 +1,101 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    background-size: cover;
+}
+
+.jb-box {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 150px auto;
+    position: relative;
+
+}
+
+video {
+    width: 100%;
+    height: 100%;
+}
+
+.video text {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+.jb-text {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+
+}
+
+
+.jb-text p {
+    margin-top: -24px;
+    text-align: center;
+    font-size: 80px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+.jb-text h2 {
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+    margin-top: -24px;
+    text-align: center;
+    font-size: 48px;
+    color: #ffffff;
+    font-family: 'Jeju Gothic', sans-serif;
+    font-size: 6em;
+    text-align: center;
+    color: white;
+    z-index: 1;
+    mix-blend-mode: overlay;
+    text-decoration: none;
+
+}
+
+
+.jb-text h4 {
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+    font-family: 'Jeju Gothic', sans-serif;
+    font-size: 2em;
+    text-align: center;
+    color: white;
+    z-index: 3;
+    mix-blend-mode: overlay;
+    text-decoration: none;
+.order {
+    width: 500px;
+    margin: 60px auto 0px auto;
+    padding-bottom: 60px;
+}
+
+
+h1 {
+    font-weight: bold;
+}
+
+.order {
+    width: 500px;
+    margin: 60px auto 0px auto;
+    padding-bottom: 60px;
+}
+
+.mybtn {
+    width: 100%;
+}
+
+.order > table {
+    margin: 40px 0;
+    font-size: 18px;
+}
+
+option {
+    color: black;
+}
+
