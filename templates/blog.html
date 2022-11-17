@@ -20,8 +20,8 @@
          function listing() {
              $.ajax({
                  type: 'GET',
-                 url: '/blog',
-                 data: {},
+                 url: '/api',
+                 data: {title1_give:title1, summary1_give:summary1, time1_give:time1},
                  success: function (response) {
 
                      let rows = response['blog']
@@ -49,36 +49,24 @@
     </script>
 {% block body %}
 <header id="header" class="header-section wf-section">
-        <div class="w-container"><a href="/templates/index.html" aria-current="page" class="main-title w--current">TaeCho.vil</a>
-            <p class="main-subheading"> TaeCho village Peoples live Post</p>
-            <div data-delay="200" data-hover="false" data-w-id="6584a19a-5691-0e50-f8da-d2bf173f6d2b"
-                class="dropdown-wrapper w-dropdown" style="">
-                <div class="dropdown-menu w-clearfix w-dropdown-toggle" id="w-dropdown-toggle-0"
-                    aria-controls="w-dropdown-list-0" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0"><img
-                        src="https://uploads-ssl.webflow.com/63712e2439109b7ea30c09d5/63712e2439109b2bc80c0a6b_menu.svg"
-                        width="12" height="12" alt="" class="menu-icon">
-                    <div class="menu-text">Menu</div>
-                </div>
-                <nav class="menu-list w-dropdown-list"
-                    style="transform: translate3d(0px, 20px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 0;"
-                    id="w-dropdown-list-0" aria-labelledby="w-dropdown-toggle-0"><a href="/" aria-current="page"
-                        class="menu-link home w-dropdown-link w--current" tabindex="0">Home</a><a href="/about"
-                        class="menu-link w-dropdown-link" tabindex="0">About</a><a href="/contact"
-                        class="menu-link w-dropdown-link" tabindex="0">Contact</a></nav>
-            </div>
-            <div class="social-link-group">
-                <a href="https://docs.google.com/spreadsheets/d/1y8mohUoAz-6ERVbjLebWKvIE_Jt6Si0lwDTAFDfgVLE/edit#gid=0" class="social-icon-link w-inline-block"><img
-                        src="C:\Taechovil blog\캡처.PNG"
-                        width="25" alt="https://github.com/befunc/TaeCho.vil"></a>
-                <a href="https://github.com/befunc/TaeCho.vil" class="social-icon-link w-inline-block"><img
-                        src="https://uploads-ssl.webflow.com/63712e2439109b7ea30c09d5/63712e2439109b1b6e0c0a1e_social-18.svg"
-                        width="25" alt="https://github.com/befunc/TaeCho.vil"></a>
-                <a href="https://github.com/befunc/TaeCho.vil" class="social-icon-link w-inline-block"><img
-                        src="https://uploads-ssl.webflow.com/63712e2439109b7ea30c09d5/63712e2439109b29350c0a08_social-15.svg"
-                        width="25" alt="https://github.com/befunc/TaeCho.vil"></a>
+    <div class="w-container"><a href="/templates/index.html" aria-current="page" class="main-title w--current">TaeCho.vil</a>
+        <p class="main-subheading"> TaeCho village Peoples live Post</p>
 
-            </div>
-        </div>
+    </div>
+    <div class="social-link-group">
+        <a href="https://docs.google.com/spreadsheets/d/1y8mohUoAz-6ERVbjLebWKvIE_Jt6Si0lwDTAFDfgVLE/edit#gid=0"
+           class="social-icon-link w-inline-block"><img
+                src="C:\Taechovil blog\캡처.PNG"
+                width="25" alt="https://github.com/befunc/TaeCho.vil"></a>
+        <a href="https://github.com/befunc/TaeCho.vil" class="social-icon-link w-inline-block"><img
+                src="https://uploads-ssl.webflow.com/63712e2439109b7ea30c09d5/63712e2439109b1b6e0c0a1e_social-18.svg"
+                width="25" alt="https://github.com/befunc/TaeCho.vil"></a>
+        <a href="https://github.com/befunc/TaeCho.vil" class="social-icon-link w-inline-block"><img
+                src="https://uploads-ssl.webflow.com/63712e2439109b7ea30c09d5/63712e2439109b29350c0a08_social-15.svg"
+                width="25" alt="https://github.com/befunc/TaeCho.vil"></a>
+
+    </div>
+    </div>
         <div class="content-wrapper">
             <div class="w-container">
                 <div class="w-dyn-list">

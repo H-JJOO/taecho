@@ -1,7 +1,12 @@
+from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 from pymongo import MongoClient
+import requests # requests 라이브러리 설치 필요
+
+r = requests.get('http://spartacodingclub.shop/sparta_api/seoulair')
+rjson = r.json()
 
 client = MongoClient('mongodb+srv://test:sparta@cluster0.1iypvdi.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
@@ -25,9 +30,26 @@ def joo():
     return render_template('member_1.html')
 
 
+
 @app.route('/member_2')
 def jun():
     return render_template('member_2.html')
+
+@app.route("/member_2", methods=["POST"])
+def post_guest_list2():
+    name_receive = request.form['name_give']
+    message_receive = request.form['message_give']
+
+
+    doc = {
+        'name': name_receive,
+        'message': message_receive
+    }
+    db.member_2.insert_one(doc)
+
+
+    return jsonify({'msg': '기록 완료!'})
+
 
 
 @app.route('/member_3')
@@ -68,15 +90,41 @@ def promise():
 
 
 # 블로그 페이지
-@app.route('/blog')
+@app.route('/')
 def blog():
     return render_template('blog.html')
 
 
-@app.route("/blog", methods=["GET"])
+for i in range(1, 6):
+    url = 'https://icepri3535.tistory.com/?page=' + str((i))
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+
+    data = requests.get('https://icepri3535.tistory.com/?page=' + str((i)),headers=headers)
+    soup = BeautifulSoup(data.text, 'html.parser')
+
+    blogs = soup.select('#mArticle > div')
+
+    for blog in blogs:
+        a = blog.select_one('strong')
+        if a is not None:
+            title1 = a.text
+            time1 = blog.select_one('div > span.txt_date').text
+            summary1 = blog.select_one('a.link_post > p').text
+            print(title1, summary1, time1)
+
+            doc = {
+                'title1': title1,
+                'summary1': summary1,
+                'time1': time1,
+            }
+            db.TaechoBlog.insert_one(doc)
+
+
+@app.route("/", methods=["GET"])
 def blog_get():
     blog_list = list(db.TaechoBlog.find({}, {'_id': False}))
-    return jsonify({'blog': blog_list})
+    return jsonify({'TaeChoblog': blog_list})
 
 
 

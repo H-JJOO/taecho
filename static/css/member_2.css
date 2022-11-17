@@ -12,6 +12,7 @@ body {
     margin: 150px auto;
     position: relative;
 
+
 }
 
 video {
@@ -69,10 +70,12 @@ video {
     z-index: 3;
     mix-blend-mode: overlay;
     text-decoration: none;
+}
 .order {
     width: 500px;
     margin: 60px auto 0px auto;
     padding-bottom: 60px;
+     mix-blend-mode: overlay;
 }
 
 
@@ -84,18 +87,17 @@ h1 {
     width: 500px;
     margin: 60px auto 0px auto;
     padding-bottom: 60px;
+     mix-blend-mode: overlay;
 }
 
 .mybtn {
     width: 100%;
-}
+     mix-blend-mode: overlay;
 
-.order > table {
-    margin: 40px 0;
-    font-size: 18px;
 }
-
-option {
-    color: black;
-}
-
+ .mybook {
+        width: 95%;
+        max-width: 500px;
+        margin: 20px auto 0px auto;
+        padding: 20px;
+        box-shadow: 0px 0px 3px 0px gray;
