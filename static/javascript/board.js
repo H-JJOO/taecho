@@ -52,7 +52,7 @@ function requestPostBoards(memberId, data, handler) {
     $.ajax({
         type: 'POST',
         url: `/api/boards/${memberId}`,
-        data: {name_give: name, message_give: message},
+        data: {name: name, message: message},
         success: handler
     });
 }
