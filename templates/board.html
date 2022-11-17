@@ -120,23 +120,17 @@
 
 
 </style>
-
+<script src="/static/javascript/board.js"></script>
 <script>
-    $(document).ready(function () {
-        for (let i = 0; i < 5; i++) {
-            const url = `/api/boards/${i + 1}`
-            $.ajax({
-                type: 'GET',
-                url: url,
-                data: {},
-                success: function (response) {
-                    let rows = response['guests']
-                    for (let j = 0; j < rows.length; j++) {
-                        let name = rows[j]['name']
-                        let message = rows[j]['message']
+    function setBoardsHtml(memberId) {
+        return function (response) {
+            let rows = response['guests']
+            for (let i = 0; i < rows.length; i++) {
+                let name = rows[i]['name']
+                let message = rows[i]['message']
 
-                        let temp_html =
-                            ` <tr>
+                let temp_html =
+                    ` <tr>
                         <td>
                          <div class="list-group" >
                             <a class="list-group-item list-group-item-action">
@@ -149,12 +143,16 @@
                         </td>
 
                     </tr>`
-                        $(`#guest${i + 1}-box`).append(temp_html)
-                    }
-                }
-            })
+                $(`#guest${memberId}-box`).append(temp_html)
+            }
         }
+    }
 
+    $(document).ready(function () {
+        for (let i = 0; i < 5; i++) {
+            const memberId = i + 1
+            requestGetBoards(memberId, setBoardsHtml(memberId))
+        }
     });
 
     //방명록 여닫는 버튼 코드
