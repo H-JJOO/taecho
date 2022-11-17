@@ -44,13 +44,11 @@ def post_guest_list2():
     name_receive = request.form['name_give']
     message_receive = request.form['message_give']
 
-
     doc = {
         'name': name_receive,
         'message': message_receive
     }
     db.member_2.insert_one(doc)
-
 
     return jsonify({'msg': '기록 완료!'})
 
@@ -83,12 +81,13 @@ def blog():
     return render_template('blog.html')
 
 
-for i in range(1, 6):
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+for i in range(1, 7):
+    url = 'https://icepri3535.tistory.com/?page=' + str((i))
 
-    data = requests.get('https://icepri3535.tistory.com/?page=' + str((i)), headers=headers)
+    data =requests.get('https://icepri3535.tistory.com/?page=' + str((i)) , headers=headers)
     soup = BeautifulSoup(data.text, 'html.parser')
 
     blogs = soup.select('#mArticle > div')
@@ -99,21 +98,24 @@ for i in range(1, 6):
             title1 = a.text
             time1 = blog.select_one('div > span.txt_date').text
             summary1 = blog.select_one('a.link_post > p').text
-            print(title1, summary1, time1)
 
             doc = {
                 'title1': title1,
                 'summary1': summary1,
-                'time1': time1,
+                'time1': time1
             }
-            db.TaechoBlog.insert_one(doc)
+            # db.TaechoBlog.insert_one(doc)
 
 
-@app.route("taecho/", methods=["GET"])
+
+
+@app.route("/blog", methods=["GET"])
 def blog_get():
     blog_list = list(db.TaechoBlog.find({}, {'_id': False}))
-    return jsonify({'blogs': blog_list})
-    return render_template('blog.html')
+
+    return jsonify({'blogs':blog_list})
+
+
 
 
 
@@ -132,7 +134,7 @@ def objectIdDecoder(list):
     return results
 
 # @app.route("/api/boards/<member_id>", methods=["POST", "GET"])
-@app.route("/api/boards/<member_id>", methods=["POST", "GET", "PUT", "DELETE"])
+@app.route("/api/boards/<member_id>", methods=["POST"])
 def api_boards(member_id):
     col_name = 'member_' + member_id
     if request.method == "POST":

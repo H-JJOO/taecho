@@ -2,6 +2,8 @@
 {% block head %}
 <title>전수빈</title>
 
+
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +37,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/taecho',
+                url: '/member_2',
                 data: {name_give:name, message_give:message},
                 success: function (response) {
                     alert(response['msg'])
@@ -55,24 +57,32 @@
     </video>
     <div class="jb-text">
         <h2>
-            <a href="/static/images/KakaoTalk_20221115_005124171.mp4"> GO! JUN SUBIN</a>
+            <button onclick="open_book()">왔으면 한마디 해야제</button>
+            <div class="mybook" id="book-box">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="name" placeholder="name@example.com">
+                    <label for="name">이름</label>
+                </div>
+
+                <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="message"
+                  style="height: 100px"></textarea>
+                    <label for="message">메세지 남기기</label>
+                </div>
+                <div class="mybtns">
+                    <button onclick="save_board()" type="button" class="btn btn-dark">기록하기</button>
+                    <button onclick="close_book()" type="button" class="btn btn-outline-dark">닫기</button>
+                </div>
+            </div>
+
         </h2>
         <h4> About me </h4>
         <a href="https://www.instagram.com/firstman___/"><h4> INSTAGRAM </h4></a>
         <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entp"><h4> MBTI</h4></a>
 
     </div>
-    <div class="visitor-info">
-        <div class="input-group mb-3">
-            <span class="input-group-text">이름</span>
-            <input id="name" type="text" class="form-control">
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text">글</span>
-            <input id="message" type="text" class="form-control">
-        </div>
 
-        <button onclick="save_board()" type="button" class="btn btn-warning mybtn">글남기기</button>
-    </div>
+</div>
+
 </div>
 {% endblock %}
