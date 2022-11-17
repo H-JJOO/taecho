@@ -57,3 +57,41 @@ function requestPostBoards(memberId, data, handler) {
     });
 }
 
+/**
+ *
+ * 서버에 방명록 수정을 요청하는 Ajax 함수
+ *
+ * @param {number} memberId (1-5) 멤버 아이디
+ * @param {object} data { id: (받아왔던 것의 _id), message: 수정할 것}
+ * @param {callback} handler Ajex 성공시에 실행되는 콜백. (response) => void
+ */
+function requestPutBoards(memberId, data, handler) {
+    const {id, message} = data
+    $.ajax({
+        type: 'PUT',
+        url: `/api/boards/${memberId}`,
+        data: {id: id, message: message},
+        success: handler
+    });
+}
+
+
+/**
+ *
+ * 서버에 방명록 수정을 요청하는 Ajax 함수
+ *
+ * @param {number} memberId (1-5) 멤버 아이디
+ * @param {string} id { 받아온 것의 _id}
+ * @param {callback} handler Ajex 성공시에 실행되는 콜백. (response) => void
+ */
+function requestDeleteBoards(memberId, id, handler) {
+    $.ajax({
+        type: 'DELETE',
+        url: `/api/boards/${memberId}`,
+        data: {id: id},
+        success: handler
+    });
+}
+
+
+
