@@ -36,9 +36,10 @@
             $.ajax({
                 type: 'POST',
                 url: '/taecho',
-                data: {name_give:name, message_give:message '데이터전송'},
+                data: {name_give:name, message_give:message},
                 success: function (response) {
                     alert(response['msg'])
+                   window.location.reload()
                 }
             });
         }

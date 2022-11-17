@@ -6,16 +6,12 @@ app = Flask(__name__)
 from pymongo import MongoClient
 import requests # requests 라이브러리 설치 필요
 
-r = requests.get('http://spartacodingclub.shop/sparta_api/seoulair')
-rjson = r.json()
 
 client = MongoClient('mongodb+srv://test:sparta@cluster0.1iypvdi.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
 
 
-from pymongo import MongoClient
-client = MongoClient('mongodb+srv://dadaqq1009:z10091214@cluster0.ooefn7z.mongodb.net/?retryWrites=true&w=majority')
-db = client.dbsparta
+
 
 # index 페이지
 @app.route('/')
@@ -82,17 +78,17 @@ def promise():
 
 
 # 블로그 페이지
-@app.route('/')
+@app.route('/blog')
 def blog():
     return render_template('blog.html')
 
 
 for i in range(1, 6):
-    url = 'https://icepri3535.tistory.com/?page=' + str((i))
+
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 
-    data = requests.get('https://icepri3535.tistory.com/?page=' + str((i)),headers=headers)
+    data = requests.get('https://icepri3535.tistory.com/?page=' + str((i)), headers=headers)
     soup = BeautifulSoup(data.text, 'html.parser')
 
     blogs = soup.select('#mArticle > div')
@@ -113,11 +109,11 @@ for i in range(1, 6):
             db.TaechoBlog.insert_one(doc)
 
 
-@app.route("/", methods=["GET"])
+@app.route("taecho/", methods=["GET"])
 def blog_get():
     blog_list = list(db.TaechoBlog.find({}, {'_id': False}))
-    return jsonify({'TaeChoblog': blog_list})
-
+    return jsonify({'blogs': blog_list})
+    return render_template('blog.html')
 
 
 
