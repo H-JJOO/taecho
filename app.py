@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, url_for
 
 app = Flask(__name__)
 
@@ -15,31 +15,28 @@ def home():
 def goals():
     return render_template('goals.html')
 
+#---------------------------
+#---------------------------
 # 팀 소개 페이지
 @app.route('/introduce')
 def introduce():
     return render_template('introduce.html')
-
-# 팀원 한명 한명 페이지
-@app.route('/member_1')
-def joo():
-    return render_template('member_1.html')
-
-@app.route('/member_2')
-def jun():
-    return render_template('member_2.html')
-
-@app.route('/member_3')
-def park():
-    return render_template('member_3.html')
-
-@app.route('/member_4')
-def lee():
-    return render_template('member_4.html')
-
-@app.route('/member_5')
-def jung():
-    return render_template('member_5.html')
+# html 이름을 바꾸고 배열식으로 만들어서 만들어도됨..
+# member_' + member_num + '.html'
+@app.route('/<member_name>')
+def introduce_members(member_name):
+    if member_name == "joo":
+        return render_template('member_1.html')
+    if member_name == "jun":
+        return render_template('member_2.html')
+    if member_name == "park":
+        return render_template('member_3.html')
+    if member_name == "lee":
+        return render_template('member_4.html')
+    if member_name == "jeong":
+        return render_template('member_5.html')
+#---------------------------
+#---------------------------
 
 # 팀 약속 페이지
 @app.route('/promise')

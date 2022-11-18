@@ -81,12 +81,11 @@ let temp_html_post = `<div class="mypost" id="postBox">
                             <h1>Guest Book</h1>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="name" placeholder="url">
+                            <input type="text" class="form-control" id="nameInput" placeholder="url">
                             <label for="floatingInput">name</label>
                         </div>
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="comment"
-                                style="height: 100px"></textarea>
+                            <textarea class="form-control" placeholder="Leave a comment here" id="commentInput" style="height: 100px"></textarea>
                             <label for="floatingTextarea2">comment</label>
                         </div>
                    
@@ -141,8 +140,8 @@ function closePostBox() {
 
 function write_book() {
 
-    let name = $('#name').val()
-    let message = $('#comment').val()
+    let name = $('#nameInput').val()
+    let message = $('#commentInput').val()
 
     if (name === '') {
         alert('이름을 써주세요!')
@@ -152,11 +151,11 @@ function write_book() {
     } 
     else $.ajax({
         type: 'POST',
-        url: '/api/boards/member_5',
+        url: '/api/boards/5',
         data: {name_give: name, message_give: message},
         success: function (response) {
             alert(response['msg'])
-            window.location.reload()
+            // window.location.reload()
         }
     });
 }
