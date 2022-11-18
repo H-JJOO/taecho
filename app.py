@@ -104,7 +104,7 @@ for i in range(1, 7):
                 'summary1': summary1,
                 'time1': time1
             }
-            # db.TaechoBlog.insert_one(doc)
+            db.TaechoBlog.insert_one(doc)
 
 
 
