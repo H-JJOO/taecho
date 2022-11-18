@@ -2,6 +2,10 @@ from flask import Flask, render_template, request, jsonify
 from bson.objectid import ObjectId
 from datetime import datetime
 app = Flask(__name__)
+from pymongo import MongoClient
+
+client = MongoClient('mongodb+srv://test:sparta@cluster0.1iypvdi.mongodb.net/?retryWrites=true&w=majority')
+db = client.dbsparta
 
 
 from pymongo import MongoClient
