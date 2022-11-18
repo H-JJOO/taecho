@@ -71,6 +71,16 @@
     width: 60%;
 }
 
-button {
+#no-selected > button {
     width: 100%;
+}
+
+
+
+#selected > button {
+    width: 32%;
+}
+
+#selected {
+    display: none;
 }
