@@ -193,9 +193,11 @@
     let selectedId
     let modal
 
-    function showModal(memberId, id) {
+    function showModal(memberId, id, name, message) {
         selectedMemberId = memberId
         selectedId = id
+        $('#floatingInput').val(name);
+        $('#floatingTextarea2').val(message)
         modal.style.display = "flex"
     }
 
@@ -255,7 +257,7 @@
                             </a>
                            <div id="container">
                            <button type="button" onclick="deleteBoard(${memberId}, '${id}')">❌</button>
-                           <button type="button" class="btn-modal" onclick="showModal(${memberId}, '${id}')">📝</button>
+                           <button type="button" class="btn-modal" onclick="showModal(${memberId}, '${id}', '${name}', '${message}')">📝</button>
                            </div>
                         </td>
 
@@ -382,7 +384,7 @@
             <div class="content">
 
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" disabled>
                     <label for="floatingInput">이름</label>
                 </div>
 
