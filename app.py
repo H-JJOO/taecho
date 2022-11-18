@@ -10,9 +10,6 @@ import requests # requests 라이브러리 설치 필요
 client = MongoClient('mongodb+srv://dadaqq1009:z10091214@cluster0.ooefn7z.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
 
-
-
-
 # index 페이지
 @app.route('/')
 def home():
