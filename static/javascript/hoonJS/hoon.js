@@ -152,7 +152,7 @@ function write_book() {
     else $.ajax({
         type: 'POST',
         url: '/api/boards/5',
-        data: {name_give: name, message_give: message},
+        data: {name: name, message: message},
         success: function (response) {
             alert(response['msg'])
             // window.location.reload()
