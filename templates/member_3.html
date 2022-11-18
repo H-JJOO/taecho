@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 {% block head %}
-<link rel="stylesheet" href="/static/css/member_3.css">
+<link rel="stylesheet" href="{{url_for('static', filename='css/member_3.css')}}">
 <title>박진</title>
 <script src="{{url_for('static', filename='javascript/board.js')}}"></script>
 <script>
@@ -24,7 +24,7 @@
 {% block body %}
 <div class="container mt-3 pb-5">
     <div class="d-flex flex-row mb-3">
-        <img src="/static/images/parkjin.jpg" class="img-thumbnail">
+        <img src="/images/parkjin/parkjin.jpg" class="img-thumbnail">
 
         <div class="profile ms-3">
             <p class="fs-2">박진(Park Jin)</p>
