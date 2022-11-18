@@ -1,3 +1,5 @@
+from flask import Flask, render_template, request, jsonify, url_for
+
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify, url_for
 from bson.objectid import ObjectId
@@ -39,7 +41,8 @@ def introduce_members(member_name):
         return render_template('member_4.html')
     if member_name == "jeong":
         return render_template('member_5.html')
-
+#---------------------------
+#---------------------------
 
 
 # 팀 약속 페이지
