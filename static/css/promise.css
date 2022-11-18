@@ -8,15 +8,17 @@
     height: 70%;
     max-height: 680px;
     border-radius: 30% 30% 0 0;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/static/images/stone.jpg");
-    background-size: cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/static/images/parkjin/stone.jpg");
 }
 
 .promise {
     position: absolute;
     text-align: center;
+    align-items: center;
     top: 50%;
     left: 50%;
+    width: 95%;
+    height: 95%;
     transform: translate(-50%, -50%);
     font-family: "Nanum Brush Script", cursive;
     color: white;
@@ -36,6 +38,49 @@
     font-size: 20px;
 }
 
-.promise > .scratch {
+.scratch-container {
     position: absolute;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+
+.popup {
+    display: none;
+}
+
+.scratch {
+    opacity: 0.6;
+}
+
+.scratch-container:hover + .popup {
+    position: absolute;
+    display: block;
+    font-size: 64px;
+    width: 90%;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    opacity: 1.0 !important;
+}
+
+.input-box {
+    margin: 0 auto;
+    width: 60%;
+}
+
+#no-selected > button {
+    width: 100%;
+}
+
+
+
+#selected > button {
+    width: 32%;
+}
+
+#selected {
+    display: none;
 }
