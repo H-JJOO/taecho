@@ -2,15 +2,120 @@
 {% block head %}
 <link rel="stylesheet" href="/static/css/promise.css">
 <title>팀 약속</title>
+<script src="/static/javascript/promise.js"></script>
+<script>
+    let selectedId = null;
+
+    function randomizeNumber(min, max) {
+        return Math.random() * (max - min) + min
+    }
+
+    function randomizeInt(min, max) {
+        return Math.floor(Math.random() * (max - min) + min)
+    }
+
+    function randomizePromiseStyle() {
+        return `font-size: ${randomizeInt(18, 24)}px; top: ${randomizeNumber(0, 100)}%; left: ${randomizeNumber(0, 100)}%; transform: rotate(${randomizeInt(-15, 15)}deg);`
+    }
+
+    function create() {
+        const name = $('#nameInput').val();
+        const content = $('#promiseInput').val();
+        if (name.length > 10 || content.length > 50) {
+            alert("너무 길어요.")
+            return ;
+        }
+        requestPostPromises({name: name, content: content, promise_style: randomizePromiseStyle()}, (response) => {
+            alert(response['msg'])
+            window.location.reload()
+        })
+    }
+
+    function clickPromise(id, name, content) {
+        if (selectedId === id) {
+             selectedId = null;
+            $('#selected').hide();
+            $('#no-selected').show();
+            $('#nameInput2').val();
+            $('#promiseInput2').val();
+        } else {
+            selectedId = id;
+            $('#selected').show();
+            $('#no-selected').hide();
+            $('#nameInput2').val(name);
+            $('#promiseInput2').val(content);
+        }
+
+    }
+
+    function putPromise() {
+        const content = $('#promiseInput2').val();
+        requestPutPromises({id: selectedId, content: content}, (response) => {
+            alert(response['msg'])
+            window.location.reload()
+        })
+    }
+
+    function deletePromise() {
+        requestDeletePromises(selectedId, (response) => {
+            alert(response['msg'])
+            window.location.reload()
+        })
+    }
+
+    function cancel() {
+          selectedId = null;
+            $('#selected').hide();
+            $('#no-selected').show();
+            $('#nameInput2').val();
+            $('#promiseInput2').val();
+    }
+</script>
 {% endblock %}
 {% block body %}
 <div class="back">
     <div class="promise">
-        <p>태초의 약속.</p>
-        <p>하나, 팀플레이에 적극적이자.</p>
-        <p class="confirm">약속은 지켰나요?</p>
-        <p class="confirm">(지켜보고 있다.)</p>
-        <p class="scratch" style="font-size: 12px; top: -45px; transform: rotate(25deg);">기록했어요!</p>
+        <p>태초의 약속</p>
+        <p>팀플레이에 적극적이자.</p>
+        <p class="confirm">당신의 약속도 남겨보세요.</p>
+        {% for item in template_promises %}
+        <div class="scratch-container" style="{{ item.promiseStyle }}" onclick="clickPromise('{{item._id}}', '{{item.name}}', '{{item.content}}')">
+            <p class="scratch">{{ item.content }}!</p>
+
+        </div>
+        <div class="popup">
+            <p>{{ item.content }}!</p>
+            <p>- {{item.name}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container-sm">
+    <div class="input-box" id="no-selected">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nameInput">
+            <label for="nameInput">이름</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="promiseInput">
+            <label for="promiseInput">약속</label>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="create()">새기기</button>
+    </div>
+
+    <div class="input-box" id="selected">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nameInput2">
+            <label for="nameInput">이름</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="promiseInput2">
+            <label for="promiseInput">약속</label>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="putPromise()">수정하기</button>
+        <button type="button" class="btn btn-warning" onclick="deletePromise()">삭제하기</button>
+        <button type="button" class="btn btn-light" onclick="cancel()">취소</button>
     </div>
 </div>
 {% endblock %}
