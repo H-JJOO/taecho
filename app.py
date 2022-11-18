@@ -1,5 +1,3 @@
-from flask import Flask, render_template, request, jsonify, url_for
-
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify, url_for
 from bson.objectid import ObjectId
@@ -7,7 +5,6 @@ from datetime import datetime
 app = Flask(__name__)
 from pymongo import MongoClient
 import requests # requests 라이브러리 설치 필요
-
 
 client = MongoClient('mongodb+srv://dadaqq1009:z10091214@cluster0.ooefn7z.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
@@ -20,7 +17,6 @@ def home():
 @app.route('/goals')
 def goals():
     return render_template('goals.html')
-
 
 # 팀 소개 페이지
 @app.route('/introduce')
@@ -41,9 +37,6 @@ def introduce_members(member_name):
         return render_template('member_4.html')
     if member_name == "jeong":
         return render_template('member_5.html')
-#---------------------------
-#---------------------------
-
 
 # 팀 약속 페이지
 @app.route('/promise')
@@ -51,12 +44,10 @@ def promise():
     promise_list = objectIdDecoder(list(db.promises.find({}).limit(200)))
     return render_template('promise.html', template_promises=promise_list)
 
-
 # 블로그 페이지
 @app.route('/blog')
 def blog():
     return render_template('blog.html')
-
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
@@ -83,19 +74,11 @@ for i in range(1, 7):
             }
             # db.TaechoBlog.insert_one(doc)
 
-
-
-
 @app.route("/blog", methods=["GET"])
 def blog_get():
     blog_list = list(db.TaechoBlog.find({}, {'_id': False}))
 
     return jsonify({'blogs':blog_list})
-
-
-
-
-
 
 # 방명록 페이지
 @app.route('/board')
@@ -136,7 +119,6 @@ def api_boards(member_id):
     else:
         guest_list = objectIdDecoder(list(db[col_name].find({})))
         return jsonify({'guests': guest_list})
-
 
 @app.route("/api/promises", methods=["GET", "POST", "PUT", "DELETE"])
 def api_promises():
