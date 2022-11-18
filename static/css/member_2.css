@@ -1,0 +1,139 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    background-size: cover;
+}
+
+.jb-box {
+    width: 100%;
+    height: 120%;
+
+    object-fit: cover;
+
+
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 80px ;
+
+
+
+}
+
+
+.jb-text {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+
+
+
+}
+
+
+.jb-text p {
+    margin-top: -24px;
+    text-align: center;
+    font-size: 80px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+.jb-text h2 {
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+    margin-top: -24px;
+    text-align: center;
+    font-size: 48px;
+    color: #ffffff;
+    font-family: 'Jeju Gothic', sans-serif;
+    font-size: 6em;
+    text-align: center;
+    color: white;
+    z-index: 1;
+    mix-blend-mode: overlay;
+    text-decoration: none;
+
+}
+
+
+.jb-text h4 {
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+    font-family: 'Jeju Gothic', sans-serif;
+    font-size: 2em;
+    text-align: center;
+    color: white;
+    z-index: 3;
+    mix-blend-mode: overlay;
+    text-decoration: none;
+}
+.visitor-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* margin-top: auto; */
+    background-color: #ef0909;
+    border: 0px solid #dddddd;
+    border-radius: 3%;
+    padding: 25px;
+    mix-blend-mode: overlay;
+}
+.name {
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.btn btn-warning mybtn {
+    width: 100%;
+     mix-blend-mode: overlay;
+
+}
+
+.mybook {
+        width: 95%;
+        max-width: 500px;
+        margin: 20px auto 0px auto;
+        padding: 20px;
+        box-shadow: 0px 0px 3px 0px gray;
+
+        display: none;
+    }
+mybtns {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        margin-top: 20px;
+    }
+
+    .mybtns > button {
+        margin-right: 10px;
+        mix-blend-mode: overlay;
+    }
+
+
+    .contain {
+        margin: auto;
+        align-content: center;
+        width: 60%;
+        max-width: 600px;
+        height: auto;
+        background-color: white;
+        background-position: center;
+
+        border: 5px;
+        border-style: dashed;
+        border-color: cadetblue;
+        mix-blend-mode: overlay;
+
+    }
